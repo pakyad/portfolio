@@ -1,13 +1,13 @@
 "use client";
 
 import { ContactShadows, Environment, Lightformer } from "@react-three/drei";
-import { Canvas, useThree } from "@react-three/fiber";
-import { useMemo, useRef } from "react";
+import { Canvas } from "@react-three/fiber";
+import { useMemo } from "react";
 import * as THREE from "three";
+import { useViewportComposition } from "@/engine/hooks/useViewportComposition";
 
 function LiquidChrome() {
-  const group = useRef<THREE.Group>(null);
-  const { viewport } = useThree();
+  const { scale, positionX, positionY } = useViewportComposition();
   const geometry = useMemo(() => new THREE.SphereGeometry(1.1, 96, 64), []);
   const material = useMemo(() => {
     const nextMaterial = new THREE.MeshPhysicalMaterial({
@@ -42,11 +42,8 @@ function LiquidChrome() {
     return nextMaterial;
   }, []);
 
-  const scale = Math.min(viewport.width * 0.15, 0.92);
-  const x = viewport.width * 0.18;
-
   return (
-    <group ref={group} position={[x, -0.1, 0]} rotation={[0.1, -0.38, -0.06]} scale={scale}>
+    <group position={[positionX, positionY, 0]} rotation={[0.1, -0.38, -0.06]} scale={scale}>
       <mesh geometry={geometry} material={material} />
     </group>
   );
@@ -66,6 +63,11 @@ function StudioEnvironment() {
   );
 }
 
+function GroundShadow() {
+  const { shadowPositionX } = useViewportComposition();
+  return <ContactShadows position={[shadowPositionX, -1.12, 0]} opacity={0.2} scale={4.2} blur={2.8} far={2.6} />;
+}
+
 export function ChromeCanvas() {
   return (
     <Canvas
@@ -77,7 +79,7 @@ export function ChromeCanvas() {
     >
       <StudioEnvironment />
       <LiquidChrome />
-      <ContactShadows position={[0.9, -1.12, 0]} opacity={0.2} scale={4.2} blur={2.8} far={2.6} />
+      <GroundShadow />
     </Canvas>
   );
 }
