@@ -1,10 +1,12 @@
 "use client";
 
-import { useRef } from "react";
 import dynamic from "next/dynamic";
+import { useRef } from "react";
 import ScrollCue from "./ScrollCue";
 
-const ChromeCanvas = dynamic(() => import("@/components/ChromeCanvas"), { ssr: false });
+const ChromeCanvas = dynamic(() => import("@/components/ChromeCanvas"), {
+  ssr: false,
+});
 
 export default function IntroSection() {
   const chromeRef = useRef<HTMLDivElement>(null);
@@ -19,17 +21,21 @@ export default function IntroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">
           <div className="max-w-xl">
             <p className="font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] text-muted mb-6 md:mb-8">
-              Software Engineer / Creative Developer
+              Software Engineer
             </p>
+
             <h1 className="text-[clamp(2.8rem,9vw,6rem)] font-sans font-light leading-[0.92] tracking-[-0.035em] text-ink mb-6 md:mb-8">
-              Muhammad
+              Less thinking.
               <br />
-              Iyad
+              More control.
             </h1>
+
             <p className="text-[clamp(0.95rem,1.4vw,1.2rem)] text-muted leading-relaxed max-w-md font-sans">
-              I design and build digital products with clarity, motion, and character.
+              I build software that removes unnecessary decisions and makes
+              complicated things feel obvious.
             </p>
           </div>
+
           <div
             ref={chromeRef}
             className="relative h-[40vh] lg:h-[70vh] w-full max-w-lg mx-auto lg:ml-auto"
@@ -38,6 +44,7 @@ export default function IntroSection() {
           </div>
         </div>
       </div>
+
       <ScrollCue />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-rule/50" />
     </section>

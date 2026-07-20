@@ -8,9 +8,9 @@ import { projects } from "@/lib/projectData";
 const ChromeCanvas = dynamic(() => import("@/components/ChromeCanvas"), { ssr: false });
 
 const projectShapes: Record<string, "icosahedron" | "torus" | "octahedron"> = {
-  "codep-pulse": "icosahedron",
-  "see-heart": "torus",
-  "volunteer-management": "octahedron",
+  soon: "icosahedron",
+  pulse: "torus",
+  codedulu: "octahedron",
 };
 
 export default function WorkSection() {
