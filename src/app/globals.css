@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #F7F5F0;
+  --color-paper: #EFEDE8;
+  --color-ink: #151515;
+  --color-muted: #6C6A65;
+  --color-rule: #D8D4CC;
+  --color-violet: #7457E8;
+  --color-pale-violet: #E8E1FF;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: visible;
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-pale-violet);
+  color: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.scroll-container {
+  display: flex;
+  flex-direction: row;
+  will-change: transform;
+}
+
+.section-panel {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .scroll-container {
+    flex-direction: column;
+    will-change: unset;
+  }
+  .section-panel {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    padding: 5rem 0;
+  }
+}
+
+.chrome-canvas {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chrome-canvas {
+    display: none;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
