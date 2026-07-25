@@ -81,7 +81,6 @@ export default function HorizontalIndex() {
     let bassLoop: any = null;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let arpLoop: any = null;
-    let step = 0;
 
     function initTone() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -117,13 +116,13 @@ export default function HorizontalIndex() {
         if (padLoop) { padLoop.dispose(); padLoop = null; }
         if (bassLoop) { bassLoop.dispose(); bassLoop = null; }
         if (arpLoop) { arpLoop.dispose(); arpLoop = null; }
-        step = 0;
       }
 
       function buildLoops(preset: { bpm: number; chord: string[]; bass: string; arp: string[] }) {
         disposeLoops();
         Tone.Transport.bpm.value = preset.bpm;
 
+        let step = 1;
         padLoop = new Tone.Loop((time: number) => {
           pad.triggerAttackRelease(preset.chord, "2n", time);
         }, "1m");
@@ -143,24 +142,36 @@ export default function HorizontalIndex() {
         const preset = loopPresets[name];
         if (!preset || currentPreset === name) return;
 
-        masterVol.volume.rampTo(-24, 0.3);
-        setTimeout(() => {
-          buildLoops(preset);
-          if (padLoop) padLoop.start(0);
-          if (bassLoop) bassLoop.start(0);
-          if (arpLoop) arpLoop.start("0:1");
-          currentPreset = name;
-          masterVol.volume.rampTo(-10, 0.5);
-        }, 300);
+        disposeLoops();
+        currentPreset = name;
+        Tone.Transport.bpm.value = preset.bpm;
+
+        const now = Tone.now();
+
+        pad.triggerAttackRelease(preset.chord, "2n", now);
+        bass.triggerAttackRelease(preset.bass, "8n", now + 0.01);
+        pluck.triggerAttackRelease(preset.arp[0], "16n", now + 0.02);
+
+        masterVol.volume.cancelScheduledValues(now);
+        masterVol.volume.setValueAtTime(masterVol.volume.value, now);
+        masterVol.volume.linearRampTo(-10, 0.12);
+
+        buildLoops(preset);
+        padLoop.start("+1m");
+        bassLoop.start("+4n");
+        arpLoop.start("+8n");
       }
 
       function stopLoop() {
-        masterVol.volume.rampTo(-40, 0.6);
-        setTimeout(() => {
-          disposeLoops();
-          currentPreset = null;
+        const now = Tone.now();
+        masterVol.volume.cancelScheduledValues(now);
+        masterVol.volume.setValueAtTime(masterVol.volume.value, now);
+        masterVol.volume.linearRampTo(-36, 0.18);
+        disposeLoops();
+        currentPreset = null;
+        Tone.Draw.schedule(() => {
           masterVol.volume.value = -10;
-        }, 650);
+        }, now + 0.2);
       }
 
       async function unlockAudio() {
@@ -168,6 +179,8 @@ export default function HorizontalIndex() {
         await Tone.start();
         Tone.Transport.start();
         audioReady = true;
+        const hint = document.getElementById("audio-hint");
+        if (hint) hint.textContent = "Sound enabled — hover a project.";
       }
 
       const unlockHandler = () => { unlockAudio(); window.removeEventListener("pointerdown", unlockHandler); };
@@ -217,6 +230,7 @@ export default function HorizontalIndex() {
     <>
       <section id="work" className="work-section" aria-labelledby="work-heading">
         <h2 id="work-heading">Selected work.</h2>
+        <p className="hint" id="audio-hint">Click anywhere once to enable sound — then hover a project.</p>
         <div className="project-list" ref={listRef}>
           {projects.map((project, i) => {
             const gradients = [

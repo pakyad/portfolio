@@ -34,6 +34,7 @@ a { color: inherit; }
 
 .work-section, .about-section, .contact-section { padding: clamp(88px, 10vw, 160px) 0; border-top: 1px solid var(--rule); }
 .work-section h2 { margin: 0 0 12px; font-size: 40px; font-weight: 500; }
+.work-section .hint { color: var(--muted); font-size: 13px; margin: 0 0 60px; }
 .project-list { border-top: 1px solid var(--rule); }
 .project-row { display: flex; align-items: baseline; gap: 28px; padding: 40px 0; border-bottom: 1px solid var(--rule); color: var(--ink); text-decoration: none; cursor: pointer; position: relative; transition: opacity .3s ease; }
 .project-list:hover .project-row:not(:hover) { opacity: 0.35; }
