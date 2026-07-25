@@ -2,7 +2,11 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getProject, projects } from "@/content/projects";
 import { site } from "@/content/site";
-import ProjectShell from "@/components/ProjectShell";
+import ProjectHero from "@/components/projects/ProjectHero";
+import ProjectThesis from "@/components/projects/ProjectThesis";
+import SystemMap from "@/components/projects/SystemMap";
+import EvidenceGrid from "@/components/projects/EvidenceGrid";
+import ReadingProgress from "@/components/projects/ReadingProgress";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -26,5 +30,14 @@ export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
-  return <ProjectShell slug={slug} />;
+
+  return (
+    <article className="project-detail">
+      <ReadingProgress />
+      <ProjectHero project={project} />
+      <ProjectThesis project={project} />
+      <SystemMap project={project} />
+      <EvidenceGrid project={project} />
+    </article>
+  );
 }
