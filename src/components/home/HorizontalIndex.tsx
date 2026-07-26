@@ -153,7 +153,7 @@ export default function HorizontalIndex() {
       if (hoveredRowRef.current) activateRow(hoveredRowRef.current);
     }
 
-    const rows = list.querySelectorAll<HTMLElement>(".project-row");
+    const rows = list.querySelectorAll<HTMLElement>(".row");
 
     function activateRow(row: HTMLElement) {
       rows.forEach((r) => r.classList.remove("active"));
