@@ -195,26 +195,68 @@ export default function HorizontalIndex() {
         toggle.addEventListener("click", toggleHandler);
       }
 
-      const rows = (list as HTMLElement).querySelectorAll<HTMLElement>(".project-row");
-      rows.forEach((row) => {
-        const loopName = row.getAttribute("data-loop");
-        const image = row.getAttribute("data-image");
-        const label = row.getAttribute("data-label");
+      const isTouch = matchMedia("(pointer: coarse)").matches;
 
-        row.addEventListener("mouseenter", () => {
-          activeRowRef.current = row;
-          if (previewRef.current && image) previewRef.current.style.backgroundImage = image;
-          if (previewLabelRef.current && label) previewLabelRef.current.textContent = label;
-          if (previewRef.current) previewRef.current.classList.add("active");
-          if (loopName) startLoop(loopName);
-        });
+      if (isTouch) {
+        document.body.classList.add("is-touch");
+        const hint = document.getElementById("audio-hint");
+        if (hint) hint.textContent = "Scroll to preview each project — sound unlocks on first touch.";
 
-        row.addEventListener("mouseleave", () => {
-          activeRowRef.current = null;
-          if (previewRef.current) previewRef.current.classList.remove("active");
-          stopLoop();
+        function setRowActive(row: HTMLElement, active: boolean) {
+          const loopName = row.getAttribute("data-loop");
+          const btn = row.querySelector<HTMLElement>(".play-icon");
+          if (active) {
+            row.classList.add("expanded");
+            startLoop(loopName || "");
+            if (btn) { btn.textContent = "■"; btn.classList.add("playing"); }
+            if (navigator.vibrate) navigator.vibrate(6);
+          } else {
+            row.classList.remove("expanded");
+            if (currentPreset === loopName) stopLoop();
+            if (btn) { btn.textContent = "▶"; btn.classList.remove("playing"); }
+          }
+        }
+
+        const scrollObserver = new IntersectionObserver(
+          (entries) => { entries.forEach((entry) => setRowActive(entry.target as HTMLElement, entry.isIntersecting)); },
+          { rootMargin: "-42% 0px -42% 0px", threshold: 0 }
+        );
+        const touchRows = (list as HTMLElement).querySelectorAll<HTMLElement>(".project-row");
+        touchRows.forEach((row) => scrollObserver.observe(row));
+
+        touchRows.forEach((row) => {
+          const playBtn = row.querySelector<HTMLElement>(".play-icon");
+          if (playBtn) {
+            playBtn.addEventListener("click", async (e) => {
+              e.stopPropagation();
+              if (!audioReady) await unlockAudio();
+              const loopName = row.getAttribute("data-loop");
+              setRowActive(row, currentPreset !== loopName);
+            });
+          }
         });
-      });
+      } else {
+        const rows = (list as HTMLElement).querySelectorAll<HTMLElement>(".project-row");
+        rows.forEach((row) => {
+          const loopName = row.getAttribute("data-loop");
+          const image = row.getAttribute("data-image");
+          const label = row.getAttribute("data-label");
+
+          row.addEventListener("mouseenter", () => {
+            activeRowRef.current = row;
+            if (previewRef.current && image) previewRef.current.style.backgroundImage = image;
+            if (previewLabelRef.current && label) previewLabelRef.current.textContent = label;
+            if (previewRef.current) previewRef.current.classList.add("active");
+            if (loopName) startLoop(loopName);
+          });
+
+          row.addEventListener("mouseleave", () => {
+            activeRowRef.current = null;
+            if (previewRef.current) previewRef.current.classList.remove("active");
+            stopLoop();
+          });
+        });
+      }
     }
 
     const checkTone = setInterval(() => {
@@ -253,6 +295,8 @@ export default function HorizontalIndex() {
                 <h3 className="project-title">{project.title}</h3>
                 <span className="project-status">{project.role}</span>
                 <span className="project-arrow">↗</span>
+                <button className="play-icon" aria-label="Play preview sound">▶</button>
+                <div className="row-expand"><div className="row-expand-inner" style={{ backgroundImage: gradients[i % gradients.length] }}></div></div>
               </Link>
             );
           })}
