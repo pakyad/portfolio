@@ -5,9 +5,7 @@ import { site } from "@/content/site";
 import ProjectHero from "@/components/projects/ProjectHero";
 import ProjectThesis from "@/components/projects/ProjectThesis";
 import ProjectScreenshot from "@/components/projects/ProjectScreenshot";
-import SystemMap from "@/components/projects/SystemMap";
-import EvidenceGrid from "@/components/projects/EvidenceGrid";
-import ProjectTech from "@/components/projects/ProjectTech";
+import ProjectNavigator from "@/components/projects/ProjectNavigator";
 import ReadingProgress from "@/components/projects/ReadingProgress";
 
 interface Props {
@@ -37,11 +35,11 @@ export default async function ProjectPage({ params }: Props) {
     <article className="project-detail">
       <ReadingProgress />
       <ProjectHero project={project} />
-      <ProjectThesis project={project} />
-      <ProjectScreenshot project={project} />
-      <SystemMap project={project} />
-      <EvidenceGrid project={project} />
-      <ProjectTech project={project} />
+      <ProjectThesis project={project} variant="problem" />
+      <ProjectThesis project={project} variant="overview" />
+      <ProjectScreenshot project={project} variant="feature" />
+      <ProjectScreenshot project={project} variant="supporting" />
+      <ProjectNavigator project={project} />
     </article>
   );
 }

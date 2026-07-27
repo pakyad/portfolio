@@ -136,6 +136,9 @@ export default function HorizontalIndex() {
       const Tone = (window as any).Tone;
       if (!Tone) return;
 
+      audioReady = Tone.context.state === "running";
+      if (audioReady) Tone.Transport.start();
+
       disposeToneNodes();
 
       masterVol = new Tone.Volume(-10).toDestination();

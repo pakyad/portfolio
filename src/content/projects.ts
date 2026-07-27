@@ -14,7 +14,10 @@ export interface Project {
   features: string[];
   technology: string[];
   outcome: string;
-  media: { poster: string; gallery: string[] };
+  overview?: string;
+  priceGuidance?: string[];
+  runnerDescription?: string;
+  media: { poster: string; posterCaption?: string; gallery: { src: string; alt: string; caption: string; title?: string; featured?: boolean }[] };
 }
 
 export const projects: Project[] = [
@@ -24,7 +27,7 @@ export const projects: Project[] = [
     thesis: "A campus marketplace with AI-assisted price guidance for student listings.",
     role: "Solo final-year project · UniKL",
     status: "in-progress",
-    problem: "Student listings on campus marketplaces can vary wildly in price — sellers often have no reference for what something is worth among peers.",
+    problem: "Campus buying and selling often happened through WhatsApp groups and Instagram—without clear order tracking, delivery proof, or price guidance.",
     keyConstraint: "Price guidance needs to be genuinely useful without being confusing or prescriptive — students should still feel in control.",
     systemDecision: "Built a layered fallback system: first checks a Firestore cache of recent market data, then scrapes Google Shopping median prices via SerpAPI, and if both fail, prompts Claude Haiku with a constrained 'estimate a reasonable resale price in MYR, return only a number' call. Student prices are capped at 90% of whatever the system determines as the ceiling.",
     trace: [
@@ -50,7 +53,44 @@ export const projects: Project[] = [
       "Google Maps + Leaflet",
     ],
     outcome: "The key challenge wasn't the AI — it was designing a fallback system that keeps the student in control while still providing helpful guidance. The layered approach means most listings get a data-driven suggestion, and the AI only fires when live data isn't available.",
-    media: { poster: "", gallery: [] },
+    overview: "Pulse is a campus commerce platform. Students buy and sell items, merchants manage listings and orders, runners handle deliveries, and admins oversee the platform.",
+    priceGuidance: [
+      "Pulse helps students price comparable items more fairly.",
+      "It checks saved Firestore prices first, then similar listings and Google Shopping prices through SerpAPI. If market data is unavailable, Claude Haiku estimates a reasonable resale price in MYR based on the item name and category.",
+      "Pulse shows a suggested campus-friendly price before publishing, helping students avoid accidental overpricing while keeping the final decision with them.",
+    ],
+    runnerDescription: "Runners manage delivery missions, upload pickup and delivery proof, and complete a GPS proximity check at the drop-off point.",
+    media: {
+      poster: "/projects/pulse/pulse-campus-services.png",
+      posterCaption: "Pulse home — campus services, student tools, and commerce in one place.",
+      gallery: [
+        {
+          src: "/projects/pulse/pulse-marketplace.png",
+          alt: "Pulse marketplace screen showing campus item listings",
+          title: "A campus market",
+          caption: "Marketplace discovery — students browse active listings across campus.",
+        },
+        {
+          src: "/projects/pulse/pulse-campus-services.png",
+          alt: "Pulse home screen showing campus services and student directory",
+          title: "One shared place",
+          caption: "Campus services — student tools and services are available from the same app.",
+        },
+        {
+          src: "/projects/pulse/pulse-price-review.png",
+          alt: "Pulse AI price review showing a suggested campus price limit",
+          title: "Designed for fairer prices",
+          featured: true,
+          caption: "Price review — the system explains a suggested limit before a listing is published.",
+        },
+        {
+          src: "/projects/pulse/pulse-runner-dashboard.png",
+          alt: "Pulse Runner dashboard showing missions and earnings",
+          title: "Campus runners",
+          caption: "Runner dashboard — verified students can manage campus delivery requests.",
+        },
+      ],
+    },
   },
   {
     slug: "codedulu",
