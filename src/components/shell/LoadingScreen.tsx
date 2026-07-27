@@ -5,7 +5,7 @@ import { useEffect, useState, useCallback, useRef } from "react";
 export default function LoadingScreen() {
   const [progress, setProgress] = useState(0);
   const [phase, setPhase] = useState<"loading" | "ready" | "transitioning" | "dismissed">(
-    () => sessionStorage.getItem("ls-dismissed") ? "dismissed" : "loading"
+    () => typeof window !== "undefined" && sessionStorage.getItem("ls-dismissed") ? "dismissed" : "loading"
   );
   const toneStartedRef = useRef(false);
 
