@@ -62,7 +62,7 @@ export function LocationMap() {
       <div ref={mapRef} className="location-map">
         <InteractiveMap positions={DOT_POSITIONS} penang={PENANG} />
       </div>
-      <p ref={labelRef} className="info-map-label">me at Penang</p>
+      <p ref={labelRef} className="info-map-label">Based in Penang.</p>
       {arrow && (
         <svg
           className="map-arrow"

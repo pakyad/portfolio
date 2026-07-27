@@ -12,8 +12,8 @@ export default function Home() {
       <section id="about" className="about-section" aria-labelledby="about-heading">
         <div>
           <p className="eyebrow">About ↗</p>
-          <h2 id="about-heading">A Software Engineering student interested in systems, structure, and the shape of an idea.</h2>
-          <p className="about-detail">I think about how things connect — frontend, product logic, user flows, the decisions that turn a concept into something that works. I&rsquo;m learning by building.</p>
+          <h2 id="about-heading">I&rsquo;m interested in systems, structure, and the shape of an idea, but I also enjoy being creative through design.</h2>
+          <p className="about-detail">I&rsquo;m curious about how things connect — frontend, product logic, user flows, and the decisions that turn a concept into something that works. I&rsquo;m learning by building.</p>
         </div>
         <div className="info-panel">
           <div className="info-clock">

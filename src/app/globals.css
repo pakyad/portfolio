@@ -45,6 +45,10 @@ a { color: inherit; }
 .project-row:hover .project-title { transform: translateX(16px); }
 .project-arrow { font-size: 20px; color: var(--cream); opacity: 0; transform: translate(-6px, 6px); transition: all 0.3s ease; flex-shrink: 0; width: 24px; text-align: right; }
 .project-row:hover .project-arrow { opacity: 1; transform: translate(0, 0); }
+.project-row--unavailable { cursor: not-allowed; opacity: .48; }
+.project-row--unavailable .project-title { color: var(--muted); }
+.project-row--unavailable:hover .project-title { transform: none; }
+.construction-tape { flex: 0 0 auto; color: var(--muted); font-family: inherit; font-size: .72rem; letter-spacing: .04em; line-height: 1; white-space: nowrap; }
 
 body.is-touch .project-row { flex-wrap: wrap; align-items: center; }
 body.is-touch .project-row .project-arrow { display: none; }
@@ -55,7 +59,7 @@ body.is-touch .project-list.has-spotlight .project-row:not(.spotlight) { opacity
 
 #spotlight-card { display: none; }
 body.is-touch #spotlight-card {
-  display: block; position: fixed; top: 50%; left: 50%;
+  display: none; position: fixed; top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: min(75vw, 320px); height: min(50vw, 220px);
   border-radius: 6px; background-size: cover; background-position: center;
@@ -241,6 +245,7 @@ body.is-touch .spotlight-label {
    .project-row .project-category { width: auto; order: 1; }
    .project-row .project-num { order: 0; }
    .project-row .project-title { font-size: 28px; flex-basis: 100%; order: 2; }
+   .construction-tape { order: 3; font-size: .58rem; }
   .about-section { grid-template-columns: 1fr; min-height: auto; }.about-section h2 { max-width: none; }.info-panel { max-width: none; }
   .contact-section > a { grid-template-columns: 80px 1fr auto; font-size: .85rem; }.grid-row { grid-template-columns: 1fr; }.grid-col-full, .grid-col-8, .grid-col-6 { grid-column: 1; }.project-detail { padding-top: 110px; }
   .project-hero-poster, .featured-screenshot, .supporting-screenshot { grid-template-columns: 1fr; }
@@ -250,5 +255,6 @@ body.is-touch .spotlight-label {
   .supporting-screenshot::before, .supporting-screenshot::after { display: none; }
   .screenshot-card-hero, .screenshot-card-featured, .screenshot-card-supporting { width: min(88vw, 440px); }
 }
+body.is-touch #spotlight-card.active { display: block; }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }

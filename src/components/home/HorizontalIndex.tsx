@@ -250,7 +250,7 @@ export default function HorizontalIndex() {
             const allRows = (list as HTMLElement).querySelectorAll<HTMLElement>(".project-row");
             allRows.forEach((r) => r.classList.remove("spotlight"));
             (list as HTMLElement).classList.remove("has-spotlight");
-            if (spotlightCardRef.current) spotlightCardRef.current.style.backgroundImage = "";
+            if (spotlightCardRef.current) { spotlightCardRef.current.style.backgroundImage = ""; spotlightCardRef.current.classList.remove("active"); }
             if (spotlightLabelRef.current) spotlightLabelRef.current.textContent = "";
             stopLoop();
 
@@ -263,7 +263,7 @@ export default function HorizontalIndex() {
             const image = row.getAttribute("data-image");
             const label = row.getAttribute("data-label");
             const loopName = row.getAttribute("data-loop");
-            if (spotlightCardRef.current && image) spotlightCardRef.current.style.backgroundImage = image;
+            if (spotlightCardRef.current && image) { spotlightCardRef.current.style.backgroundImage = image; spotlightCardRef.current.classList.add("active"); }
             if (spotlightLabelRef.current && label) spotlightLabelRef.current.textContent = label;
             if (loopName) startLoop(loopName);
           },
@@ -330,11 +330,23 @@ export default function HorizontalIndex() {
         <h2 id="work-heading">Selected work.</h2>
         <div className="project-list" ref={listRef}>
           {projects.map((project, i) => {
+            const unavailable = project.slug === "codedulu" || project.slug === "soon";
             const gradients = [
               "linear-gradient(135deg, #2a4d7a, #16305c)",
               "linear-gradient(135deg, #3a2a6a, #1c1848)",
               "linear-gradient(135deg, #2a6a5a, #143830)",
             ];
+            if (unavailable) {
+              return (
+                <div key={project.slug} className="project-row project-row--unavailable" aria-label={`${project.title} is under construction`}>
+                  <span className="project-num">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="project-category">{categories[project.slug] || "Project"}</span>
+                  <h3 className="project-title">{project.title}</h3>
+                  <span className="construction-tape" aria-hidden="true">Unavailable</span>
+                </div>
+              );
+            }
+
             return (
               <Link
                 key={project.slug}
