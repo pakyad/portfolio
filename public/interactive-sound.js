@@ -3,7 +3,6 @@
 
   let audioCtx = null;
   let unlocked = false;
-  let muted = localStorage.getItem("site-sound-muted") === "true";
 
   function getCtx() {
     if (!audioCtx) {
@@ -24,7 +23,7 @@
   window.addEventListener("keydown", unlockAudio, { once: true });
 
   function playTone(freq, duration = 0.12, opts = {}) {
-    if (muted || !unlocked) return;
+    if (!unlocked) return;
     const ctx = getCtx();
     const { type = "sine", gain = 0.05, glideTo = null } = opts;
 
@@ -62,6 +61,10 @@
         setTimeout(() => playTone(freq, 0.15, { type: "sine", gain: 0.05 }), i * 80);
       });
     },
+    cry: () => {
+      playTone(500, 0.25, { type: "sine", gain: 0.05, glideTo: 300 });
+      setTimeout(() => playTone(400, 0.3, { type: "sine", gain: 0.04, glideTo: 200 }), 130);
+    },
   };
 
   document.querySelectorAll("[data-sound]").forEach((el) => {
@@ -77,22 +80,6 @@
       sounds.arpeggio();
       heroLogo.classList.add("spin-fast");
       setTimeout(() => heroLogo.classList.remove("spin-fast"), 900);
-    });
-  }
-
-  const toggle = document.getElementById("sound-toggle");
-  function updateToggleUI() {
-    if (!toggle) return;
-    toggle.setAttribute("aria-pressed", String(!muted));
-    toggle.textContent = muted ? "Sound off" : "Sound on";
-  }
-  if (toggle) {
-    updateToggleUI();
-    toggle.addEventListener("click", () => {
-      muted = !muted;
-      localStorage.setItem("site-sound-muted", String(muted));
-      updateToggleUI();
-      if (!muted) sounds.tick();
     });
   }
 
@@ -115,26 +102,4 @@
     });
   }
 
-  const ring = document.getElementById("cursor-ring");
-  if (ring && !prefersReducedMotion && matchMedia("(pointer: fine)").matches) {
-    let ringX = 0, ringY = 0, mouseX = 0, mouseY = 0;
-
-    window.addEventListener("mousemove", (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
-
-    function animateRing() {
-      ringX += (mouseX - ringX) * 0.2;
-      ringY += (mouseY - ringY) * 0.2;
-      ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
-      requestAnimationFrame(animateRing);
-    }
-    animateRing();
-
-    document.querySelectorAll("a, button, [data-sound], [data-magnetic]").forEach((el) => {
-      el.addEventListener("mouseenter", () => ring.classList.add("ring-active"));
-      el.addEventListener("mouseleave", () => ring.classList.remove("ring-active"));
-    });
-  }
 })();

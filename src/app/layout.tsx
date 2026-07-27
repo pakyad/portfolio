@@ -1,21 +1,21 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import localFont from "next/font/local";
+import { Anton } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import "@/styles/interactive-sound.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
-const nippo = localFont({
-  src: "./fonts/Nippo-Variable.woff2",
-  variable: "--font-nippo",
-  weight: "200 700",
+const anton = Anton({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-anton",
   display: "swap",
 });
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
-export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#F7F5F0" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#6587ab" };
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -45,13 +45,11 @@ import LoadingScreen from "@/components/shell/LoadingScreen";
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${nippo.variable}`}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${anton.variable}`} data-scroll-behavior="smooth">
       <body>
         <LoadingScreen />
         <a href="#main-content" className="skip-link">Skip to main content</a>
         <div id="main-content" tabIndex={-1}><PortfolioShell>{children}</PortfolioShell></div>
-        <div id="cursor-ring"></div>
-        <button id="sound-toggle">Sound on</button>
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js" strategy="beforeInteractive" />
         <Script src="/interactive-sound.js" strategy="afterInteractive" />
       </body>

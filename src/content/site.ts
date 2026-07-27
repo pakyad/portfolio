@@ -1,9 +1,11 @@
+export const STATUS = "seeking an internship — 12 Oct 2026 - 12 Feb 2027";
+
 export const site = {
   title: "Muhammad Iyad Iman Mohmad Nazri — Portfolio",
   shortName: "Muhammad Iyad",
-  thesis: "I build practical digital systems.",
+  thesis: "A student focused on building — systems, tools, and side projects shaped by curiosity.",
   description:
-    "Portfolio of Muhammad Iyad Iman Mohmad Nazri, a Software Engineering student.",
+    "Portfolio of Muhammad Iyad Iman — a student focused on building systems, tools, and side projects.",
   url: "https://iyad.dev",
   ogImage: "/og.jpg",
   email: "iyadmohmadnazri@gmail.com",

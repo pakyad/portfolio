@@ -5,9 +5,11 @@ import Link from "next/link";
 import { projects } from "@/content/projects";
 
 const categories: Record<string, string> = {
-  pulse: "Marketplace",
-  codedulu: "Side project",
-  soon: "Side project",
+  pulse: "Marketplace Pulse",
+  codedulu: "CodeDulu",
+  soon: "Soon",
+  laterlah: "LaterLah",
+  rosta: "Rosta",
 };
 
 const loopPresets: Record<string, { bpm: number; chord: string[]; bass: string; arp: string[] }> = {
@@ -29,6 +31,18 @@ const loopPresets: Record<string, { bpm: number; chord: string[]; bass: string; 
     bass: "C1",
     arp: ["C4", "E4", "G4", "Bb4", "G4", "E4"],
   },
+  laterlah: {
+    bpm: 88,
+    chord: ["G3", "B3", "D4", "F#4"],
+    bass: "G1",
+    arp: ["G4", "B4", "D5", "F#5", "D5", "B4"],
+  },
+  rosta: {
+    bpm: 94,
+    chord: ["A3", "C4", "E4", "G4"],
+    bass: "A1",
+    arp: ["A4", "C5", "E5", "G5", "E5", "C5"],
+  },
 };
 
 export default function HorizontalIndex() {
@@ -38,6 +52,7 @@ export default function HorizontalIndex() {
   const activeRowRef = useRef<HTMLElement | null>(null);
   const spotlightCardRef = useRef<HTMLDivElement>(null);
   const spotlightLabelRef = useRef<HTMLSpanElement>(null);
+  const stopSoundRef = useRef<() => void>(() => {});
 
   const mouseRef = useRef({ x: 0, y: 0 });
   const posRef = useRef({ x: 0, y: 0 });
@@ -74,7 +89,6 @@ export default function HorizontalIndex() {
     const list = listRef.current;
     if (!list) return;
 
-    let muted = false;
     let audioReady = false;
     let currentPreset: string | null = null;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -83,32 +97,67 @@ export default function HorizontalIndex() {
     let bassLoop: any = null;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let arpLoop: any = null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let pad: any = null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let bass: any = null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let pluck: any = null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let masterVol: any = null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let limiter: any = null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let reverb: any = null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let delay: any = null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let pluckFilter: any = null;
+    let unlockHandler: (() => void) | null = null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let scrollObserver: any = null;
+
+    function disposeToneNodes() {
+      if (padLoop) { padLoop.dispose(); padLoop = null; }
+      if (bassLoop) { bassLoop.dispose(); bassLoop = null; }
+      if (arpLoop) { arpLoop.dispose(); arpLoop = null; }
+      if (pad) { pad.dispose(); pad = null; }
+      if (bass) { bass.dispose(); bass = null; }
+      if (pluck) { pluck.dispose(); pluck = null; }
+      if (masterVol) { masterVol.dispose(); masterVol = null; }
+      if (limiter) { limiter.dispose(); limiter = null; }
+      if (reverb) { reverb.dispose(); reverb = null; }
+      if (delay) { delay.dispose(); delay = null; }
+      if (pluckFilter) { pluckFilter.dispose(); pluckFilter = null; }
+    }
 
     function initTone() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const Tone = (window as any).Tone;
       if (!Tone) return;
 
-      const masterVol = new Tone.Volume(-10).toDestination();
-      const limiter = new Tone.Limiter(-3);
-      masterVol.connect(limiter);
-      const reverb = new Tone.Reverb({ decay: 4, wet: 0.35 }).connect(masterVol);
-      const delay = new Tone.FeedbackDelay({ delayTime: "8n.", feedback: 0.3, wet: 0.25 }).connect(reverb);
+      disposeToneNodes();
 
-      const pad = new Tone.PolySynth(Tone.Synth, {
+      masterVol = new Tone.Volume(-10).toDestination();
+      limiter = new Tone.Limiter(-3);
+      masterVol.connect(limiter);
+      reverb = new Tone.Reverb({ decay: 4, wet: 0.35 }).connect(masterVol);
+      delay = new Tone.FeedbackDelay({ delayTime: "8n.", feedback: 0.3, wet: 0.25 }).connect(reverb);
+
+      pad = new Tone.PolySynth(Tone.Synth, {
         oscillator: { type: "triangle" },
         envelope: { attack: 1.2, decay: 0.3, sustain: 0.8, release: 2.5 },
         volume: -14,
       }).connect(reverb);
 
-      const bass = new Tone.Synth({
+      bass = new Tone.Synth({
         oscillator: { type: "sine" },
         envelope: { attack: 0.05, decay: 0.2, sustain: 0.9, release: 0.6 },
         volume: -8,
       }).connect(masterVol);
 
-      const pluckFilter = new Tone.Filter(1800, "lowpass").connect(delay);
-      const pluck = new Tone.Synth({
+      pluckFilter = new Tone.Filter(1800, "lowpass").connect(delay);
+      pluck = new Tone.Synth({
         oscillator: { type: "square" },
         envelope: { attack: 0.005, decay: 0.15, sustain: 0, release: 0.1 },
         volume: -20,
@@ -140,7 +189,7 @@ export default function HorizontalIndex() {
       }
 
       function startLoop(name: string) {
-        if (muted || !audioReady) return;
+        if (!audioReady) return;
         const preset = loopPresets[name];
         if (!preset || currentPreset === name) return;
 
@@ -183,48 +232,37 @@ export default function HorizontalIndex() {
         audioReady = true;
       }
 
-      const unlockHandler = () => { unlockAudio(); window.removeEventListener("pointerdown", unlockHandler); };
+      unlockHandler = () => { unlockAudio(); window.removeEventListener("pointerdown", unlockHandler!); };
       window.addEventListener("pointerdown", unlockHandler, { once: true });
 
-      const toggle = document.getElementById("sound-toggle");
-      if (toggle) {
-        const toggleHandler = () => {
-          muted = toggle.textContent === "Sound off";
-          if (muted) stopLoop();
-        };
-        toggle.addEventListener("click", toggleHandler);
-      }
+      stopSoundRef.current = stopLoop;
 
       const isTouch = matchMedia("(pointer: coarse)").matches;
 
       if (isTouch) {
         document.body.classList.add("is-touch");
 
-        let spotlightedRow: HTMLElement | null = null;
-
-        const scrollObserver = new IntersectionObserver(
+        scrollObserver = new IntersectionObserver(
           (entries) => {
-            const intersecting = entries.find((e) => e.isIntersecting);
-            const row = intersecting ? (intersecting.target as HTMLElement) : null;
-            if (row === spotlightedRow) return;
-            spotlightedRow = row;
-
             const allRows = (list as HTMLElement).querySelectorAll<HTMLElement>(".project-row");
             allRows.forEach((r) => r.classList.remove("spotlight"));
             (list as HTMLElement).classList.remove("has-spotlight");
+            if (spotlightCardRef.current) spotlightCardRef.current.style.backgroundImage = "";
+            if (spotlightLabelRef.current) spotlightLabelRef.current.textContent = "";
+            stopLoop();
 
-            if (row) {
-              row.classList.add("spotlight");
-              (list as HTMLElement).classList.add("has-spotlight");
-              const image = row.getAttribute("data-image");
-              const label = row.getAttribute("data-label");
-              const loopName = row.getAttribute("data-loop");
-              if (spotlightCardRef.current && image) spotlightCardRef.current.style.backgroundImage = image;
-              if (spotlightLabelRef.current && label) spotlightLabelRef.current.textContent = label;
-              if (loopName) startLoop(loopName);
-            } else {
-              stopLoop();
-            }
+            const entering = entries.find((e) => e.isIntersecting);
+            if (!entering) return;
+
+            const row = entering.target as HTMLElement;
+            row.classList.add("spotlight");
+            (list as HTMLElement).classList.add("has-spotlight");
+            const image = row.getAttribute("data-image");
+            const label = row.getAttribute("data-label");
+            const loopName = row.getAttribute("data-loop");
+            if (spotlightCardRef.current && image) spotlightCardRef.current.style.backgroundImage = image;
+            if (spotlightLabelRef.current && label) spotlightLabelRef.current.textContent = label;
+            if (loopName) startLoop(loopName);
           },
           { rootMargin: "-42% 0px -42% 0px", threshold: 0 }
         );
@@ -233,7 +271,6 @@ export default function HorizontalIndex() {
       } else {
         const rows = (list as HTMLElement).querySelectorAll<HTMLElement>(".project-row");
         rows.forEach((row) => {
-          const loopName = row.getAttribute("data-loop");
           const image = row.getAttribute("data-image");
           const label = row.getAttribute("data-label");
 
@@ -242,12 +279,25 @@ export default function HorizontalIndex() {
             if (previewRef.current && image) previewRef.current.style.backgroundImage = image;
             if (previewLabelRef.current && label) previewLabelRef.current.textContent = label;
             if (previewRef.current) previewRef.current.classList.add("active");
-            if (loopName) startLoop(loopName);
           });
 
           row.addEventListener("mouseleave", () => {
             activeRowRef.current = null;
             if (previewRef.current) previewRef.current.classList.remove("active");
+          });
+        });
+
+        const titles = (list as HTMLElement).querySelectorAll<HTMLElement>(".project-title");
+        titles.forEach((title) => {
+          const row = title.closest(".project-row") as HTMLElement;
+          if (!row) return;
+          const loopName = row.getAttribute("data-loop");
+
+          title.addEventListener("mouseenter", () => {
+            if (loopName) startLoop(loopName);
+          });
+
+          title.addEventListener("mouseleave", () => {
             stopLoop();
           });
         });
@@ -261,6 +311,14 @@ export default function HorizontalIndex() {
         initTone();
       }
     }, 200);
+
+    return () => {
+      clearInterval(checkTone);
+      if (unlockHandler) window.removeEventListener("pointerdown", unlockHandler);
+      if (scrollObserver) scrollObserver.disconnect();
+      stopSoundRef.current = () => {};
+      disposeToneNodes();
+    };
   }, []);
 
   return (
@@ -283,11 +341,11 @@ export default function HorizontalIndex() {
                 data-label={`${project.title} — ${categories[project.slug] || "Project"}`}
                 data-loop={project.slug}
                 aria-label={`View project: ${project.title}`}
+                onClick={() => stopSoundRef.current()}
               >
                 <span className="project-num">{String(i + 1).padStart(2, "0")}</span>
                 <span className="project-category">{categories[project.slug] || "Project"}</span>
                 <h3 className="project-title">{project.title}</h3>
-                <span className="project-status">{project.role}</span>
                 <span className="project-arrow">↗</span>
               </Link>
             );

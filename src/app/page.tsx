@@ -1,6 +1,8 @@
 import Hero from "@/components/home/Hero";
 import HorizontalIndex from "@/components/home/HorizontalIndex";
-import { site } from "@/content/site";
+import { LocalTime } from "@/components/home/LocalTime";
+import { LocationMap } from "@/components/home/LocationMap";
+import { site, STATUS } from "@/content/site";
 
 export default function Home() {
   return (
@@ -10,10 +12,19 @@ export default function Home() {
       <section id="about" className="about-section" aria-labelledby="about-heading">
         <div>
           <p className="eyebrow">About ↗</p>
-          <h2 id="about-heading">I’m a Software Engineering student who enjoys building things that live on the internet.</h2>
-          <p className="about-detail">I’m interested in product systems, frontend development, clear user flows, and learning how an idea becomes something people can use.</p>
+          <h2 id="about-heading">A Software Engineering student interested in systems, structure, and the shape of an idea.</h2>
+          <p className="about-detail">I think about how things connect — frontend, product logic, user flows, the decisions that turn a concept into something that works. I&rsquo;m learning by building.</p>
         </div>
-        <div className="about-orbit" aria-hidden="true"><span /></div>
+        <div className="info-panel">
+          <div className="info-clock">
+            <p className="info-clock-value"><LocalTime /></p>
+          </div>
+          <div className="info-field">
+            <p className="info-field-label">status</p>
+            <p className="info-field-value" data-sound="cry">{STATUS}</p>
+          </div>
+          <LocationMap />
+        </div>
       </section>
       <section id="contact" className="contact-section" aria-labelledby="contact-heading">
         <p className="eyebrow">Contact ↗</p>
@@ -21,6 +32,7 @@ export default function Home() {
         <p>If you would like to discuss a project, feel free to get in touch.</p>
         <a href={`mailto:${site.email}`} data-sound="chime">Email <span>{site.email}</span> ↗</a>
         <a href={site.social.github} target="_blank" rel="noopener noreferrer" data-sound="chime">GitHub <span>github.com/pakyad</span> ↗</a>
+        <a href="https://wa.link/6hec7n" target="_blank" rel="noopener noreferrer" data-sound="chime">WhatsApp <span>+60 1x-xxx 893</span> ↗</a>
         <a href="https://www.linkedin.com/in/iyadiman" target="_blank" rel="noopener noreferrer" data-sound="chime">LinkedIn <span>linkedin.com/in/iyadiman</span> ↗</a>
       </section>
     </>

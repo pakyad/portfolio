@@ -4,9 +4,9 @@ import Navigation from "@/components/shell/Navigation";
 import MonoLabel from "@/components/ui/MonoLabel";
 
 const SECTIONS = [
-  { id: "work", label: "Work" },
-  { id: "about", label: "About" },
-  { id: "contact", label: "Contact" },
+  { id: "work", label: "(WRK)" },
+  { id: "about", label: "(WHO)" },
+  { id: "contact", label: "(MSG)" },
 ];
 
 export default function PortfolioShell({ children }: { children: React.ReactNode }) {
