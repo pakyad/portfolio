@@ -4,14 +4,13 @@ import { useEffect, useState, useCallback, useRef } from "react";
 
 export default function LoadingScreen() {
   const [progress, setProgress] = useState(0);
-  const [phase, setPhase] = useState<"loading" | "ready" | "transitioning" | "dismissed">("loading");
+  const [phase, setPhase] = useState<"loading" | "ready" | "transitioning" | "dismissed">(
+    () => sessionStorage.getItem("ls-dismissed") ? "dismissed" : "loading"
+  );
   const toneStartedRef = useRef(false);
 
   useEffect(() => {
-    if (sessionStorage.getItem("ls-dismissed")) {
-      setPhase("dismissed");
-      return;
-    }
+    if (phase !== "loading") return;
 
     const duration = 3000;
     const start = performance.now();
@@ -29,7 +28,7 @@ export default function LoadingScreen() {
 
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [phase]);
 
   const playTransitionSound = useCallback(() => {
     if (toneStartedRef.current) return;
