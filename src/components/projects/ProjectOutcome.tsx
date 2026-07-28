@@ -4,7 +4,7 @@ const SECTION_MARKERS = ["Foundation", "System", "Problems solved"];
 
 function parseOutcome(text: string) {
   const parts: { label: string; body: string }[] = [];
-  let remaining = text;
+  const remaining = text;
 
   for (let i = 0; i < SECTION_MARKERS.length; i++) {
     const marker = SECTION_MARKERS[i] + " — ";
@@ -47,7 +47,7 @@ export default function ProjectOutcome({ project }: { project: Project }) {
       <div className="outcome-grid">
         {sections.map((section, i) => (
           <div key={i} className="outcome-card">
-            <span className="outcome-card-marker">//</span>
+            <span className="outcome-card-marker">{'//'}</span>
             <h3 className="outcome-card-label">{section.label}</h3>
             <p className="outcome-card-body">{section.body}</p>
           </div>
