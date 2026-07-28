@@ -92,7 +92,7 @@ export const projects: Project[] = [
           caption: "Price review - the system explains a suggested limit before a listing is published.",
         },
         {
-          src: "/projects/pulse/pulse-runner-dashboard.png",
+          src: "/projects/pulse/pulse-runner-updated.png",
           alt: "Pulse Runner dashboard showing missions and earnings",
           title: "Campus runners",
           caption: "Runner dashboard - verified students can manage campus delivery requests.",
