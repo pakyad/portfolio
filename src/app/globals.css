@@ -123,9 +123,10 @@ body.is-touch .spotlight-label {
 .contact-section > p:not(.eyebrow) { max-width: 30rem; margin: 0 0 52px; color: var(--muted); font-size: 1.1rem; line-height: 1.45; }
 
 .contact-links { display: flex; flex-direction: column; gap: 8px; }
-.contact-link { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-family: monospace; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; transition: opacity .2s ease; width: fit-content; }
-.contact-link:hover { opacity: .6; text-decoration: underline; }
-.contact-arrow { font-size: 11px; opacity: .7; }
+.contact-link { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-family: monospace; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; width: fit-content; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-weight: 600; }
+.contact-link:hover { opacity: .7; }
+.contact-link:hover .contact-arrow { transform: translate(2px, -2px); }
+.contact-arrow { font-size: 12px; opacity: .7; transition: transform .2s ease; display: inline-block; }
 .contact-label { color: var(--ink); }
 
 .contact-page { min-height: 100svh; background: var(--navy); display: flex; align-items: center; justify-content: center; padding: 0 36px; }
