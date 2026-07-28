@@ -151,14 +151,11 @@ body.is-touch .spotlight-label {
 .project-hero { position: relative; }
 
 
-.poster-stack { display: flex; flex-direction: column; position: relative; perspective: 1200px; }
-.poster-stack-front { position: relative; z-index: 2; }
-.poster-stack-back { margin-top: -32px; z-index: 1; }
-.poster-stack .screenshot-card { transition: box-shadow .35s ease; }
-.poster-stack:hover .screenshot-card { box-shadow: 0 18px 50px rgba(0,0,0,.22); }
+.poster-pair { display: flex; gap: 12px; align-items: end; }
+.screenshot-card-pair { width: 100%; max-width: 220px; }
 
 .project-hero-back:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 2px; }
-.project-hero-poster { display: grid; grid-template-columns: minmax(0, 1fr) minmax(180px, 360px); align-items: end; gap: clamp(36px, 8vw, 128px); }
+.project-hero-poster { display: grid; grid-template-columns: minmax(0, 1fr) minmax(200px, 460px); align-items: end; gap: clamp(36px, 8vw, 128px); }
 .project-hero-copy { padding-bottom: clamp(12px, 4vw, 64px); }
 .project-hero-title { margin: 12px 0; font-family: inherit; font-size: clamp(3.5rem, 10vw, 9rem); font-weight: 600; line-height: .86; letter-spacing: -.06em; }
 .project-hero-subtitle, .project-body-text, .evidence-card-text { color: var(--muted); font-size: clamp(1rem, 1.35vw, 1.3rem); letter-spacing: .005em; line-height: 1.45; }
