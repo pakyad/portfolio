@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844">
+  <rect width="390" height="844" fill="#f5f1ea"/>
+  <text x="20" y="70" font-family="Georgia,serif" font-size="28" font-weight="700" fill="#1c1c1b">Save something.</text>
+  <text x="20" y="100" font-family="sans-serif" font-size="14" fill="#8a857c">We'll remember it for you.</text>
+  <text x="20" y="140" font-family="sans-serif" font-size="11" font-weight="600" fill="#8a857c" letter-spacing="1">LINK</text>
+  <rect x="20" y="155" width="350" height="50" rx="12" fill="#fff" stroke="#e6e0d4" stroke-width="1"/>
+  <text x="36" y="184" font-family="sans-serif" font-size="14" fill="#8a857c">Paste a link...</text>
+  <rect x="20" y="225" width="350" height="1" fill="#e6e0d4"/>
+  <text x="195" y="238" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8a857c">or</text>
+  <rect x="20" y="245" width="350" height="1" fill="#e6e0d4"/>
+  <text x="20" y="280" font-family="sans-serif" font-size="11" font-weight="600" fill="#8a857c" letter-spacing="1">NOTE</text>
+  <rect x="20" y="295" width="350" height="100" rx="12" fill="#fff" stroke="#e6e0d4" stroke-width="1"/>
+  <text x="36" y="320" font-family="sans-serif" font-size="14" fill="#8a857c">Write a note, add a thought...</text>
+  <rect x="20" y="415" width="350" height="1" fill="#e6e0d4"/>
+  <text x="195" y="428" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#8a857c">or</text>
+  <rect x="20" y="435" width="350" height="1" fill="#e6e0d4"/>
+  <rect x="20" y="455" width="350" height="90" rx="12" fill="#fff" stroke="#e6e0d4" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="195" y="495" text-anchor="middle" font-size="24">🖼</text>
+  <text x="195" y="520" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#8a857c">Tap to upload a screenshot</text>
+  <text x="20" y="590" font-family="sans-serif" font-size="11" font-weight="600" fill="#8a857c" letter-spacing="1">ADD A THOUGHT (OPTIONAL)</text>
+  <rect x="20" y="605" width="350" height="50" rx="12" fill="#fff" stroke="#e6e0d4" stroke-width="1"/>
+  <text x="36" y="634" font-family="sans-serif" font-size="14" fill="#8a857c">Why are you saving this?</text>
+  <rect x="20" y="680" width="350" height="52" rx="12" fill="#b8d0b8"/>
+  <text x="195" y="710" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="600" fill="#1c1c1b">Save</text>
+</svg>
