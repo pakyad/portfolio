@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#4a6b8a" rx="8"/>
+  <text x="400" y="50" text-anchor="middle" fill="#f7f5f0" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="600">Roles & Permissions</text>
+  <text x="400" y="72" text-anchor="middle" fill="rgba(247,245,240,.72)" font-family="monospace" font-size="12">4 roles · 24 permissions across 8 scopes</text>
+  <rect x="30" y="95" width="175" height="460" fill="rgba(247,245,240,.06)" rx="6" stroke="rgba(247,245,240,.12)" stroke-width="1"/>
+  <text x="45" y="125" fill="#f7f5f0" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="600">Admin</text>
+  <text x="45" y="143" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">2 members</text>
+  <rect x="40" y="155" width="155" height="1" fill="rgba(247,245,240,.1)"/>
+  <text x="45" y="195" fill="#f7f5f0" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="600">Manager</text>
+  <text x="45" y="213" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">5 members</text>
+  <rect x="40" y="225" width="155" height="1" fill="rgba(247,245,240,.1)"/>
+  <text x="45" y="265" fill="#f7f5f0" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="600">Employee</text>
+  <text x="45" y="283" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">24 members</text>
+  <rect x="40" y="295" width="155" height="1" fill="rgba(247,245,240,.1)"/>
+  <text x="45" y="335" fill="#f7f5f0" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="600">Viewer</text>
+  <text x="45" y="353" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">3 members</text>
+  <rect x="225" y="95" width="545" height="460" fill="rgba(247,245,240,.04)" rx="6" stroke="rgba(247,245,240,.1)" stroke-width="1"/>
+  <text x="245" y="125" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">SCOPE</text>
+  <text x="400" y="125" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">PERMISSION</text>
+  <text x="660" y="125" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">ROLE</text>
+  <line x1="240" y1="135" x2="755" y2="135" stroke="rgba(247,245,240,.1)" stroke-width="1"/>
+  <text x="245" y="165" fill="#f7f5f0" font-family="monospace" font-size="12">schedule</text>
+  <text x="400" y="165" fill="rgba(247,245,240,.72)" font-family="monospace" font-size="11">manage, view, publish</text>
+  <text x="660" y="165" fill="#e8c87a" font-family="monospace" font-size="11">Admin, Manager</text>
+  <line x1="240" y1="180" x2="755" y2="180" stroke="rgba(247,245,240,.06)" stroke-width="1"/>
+  <text x="245" y="210" fill="#f7f5f0" font-family="monospace" font-size="12">swaps</text>
+  <text x="400" y="210" fill="rgba(247,245,240,.72)" font-family="monospace" font-size="11">manage_all, manage_own, view, request</text>
+  <text x="660" y="210" fill="#e8c87a" font-family="monospace" font-size="11">All roles</text>
+  <line x1="240" y1="225" x2="755" y2="225" stroke="rgba(247,245,240,.06)" stroke-width="1"/>
+  <text x="245" y="255" fill="#f7f5f0" font-family="monospace" font-size="12">availability</text>
+  <text x="400" y="255" fill="rgba(247,245,240,.72)" font-family="monospace" font-size="11">set, view_own, view_all</text>
+  <text x="660" y="255" fill="#e8c87a" font-family="monospace" font-size="11">All roles</text>
+  <line x1="240" y1="270" x2="755" y2="270" stroke="rgba(247,245,240,.06)" stroke-width="1"/>
+  <text x="245" y="300" fill="#f7f5f0" font-family="monospace" font-size="12">timeoff</text>
+  <text x="400" y="300" fill="rgba(247,245,240,.72)" font-family="monospace" font-size="11">request, approve, view_all</text>
+  <text x="660" y="300" fill="#e8c87a" font-family="monospace" font-size="11">Admin, Manager</text>
+  <line x1="240" y1="315" x2="755" y2="315" stroke="rgba(247,245,240,.06)" stroke-width="1"/>
+  <text x="245" y="345" fill="#f7f5f0" font-family="monospace" font-size="12">employees</text>
+  <text x="400" y="345" fill="rgba(247,245,240,.72)" font-family="monospace" font-size="11">manage, invite, deactivate</text>
+  <text x="660" y="345" fill="#e8c87a" font-family="monospace" font-size="11">Admin only</text>
+  <line x1="240" y1="360" x2="755" y2="360" stroke="rgba(247,245,240,.06)" stroke-width="1"/>
+  <text x="245" y="390" fill="#f7f5f0" font-family="monospace" font-size="12">roles</text>
+  <text x="400" y="390" fill="rgba(247,245,240,.72)" font-family="monospace" font-size="11">manage</text>
+  <text x="660" y="390" fill="#e8c87a" font-family="monospace" font-size="11">Admin only</text>
+  <line x1="240" y1="405" x2="755" y2="405" stroke="rgba(247,245,240,.06)" stroke-width="1"/>
+  <text x="245" y="435" fill="#f7f5f0" font-family="monospace" font-size="12">reports</text>
+  <text x="400" y="435" fill="rgba(247,245,240,.72)" font-family="monospace" font-size="11">view, export</text>
+  <text x="660" y="435" fill="#e8c87a" font-family="monospace" font-size="11">Admin, Manager</text>
+  <line x1="240" y1="450" x2="755" y2="450" stroke="rgba(247,245,240,.06)" stroke-width="1"/>
+  <text x="245" y="480" fill="#f7f5f0" font-family="monospace" font-size="12">settings</text>
+  <text x="400" y="480" fill="rgba(247,245,240,.72)" font-family="monospace" font-size="11">manage_org, manage_billing</text>
+  <text x="660" y="480" fill="#e8c87a" font-family="monospace" font-size="11">Admin only</text>
+</svg>

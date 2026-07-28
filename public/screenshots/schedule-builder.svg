@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#4a6b8a" rx="8"/>
+  <text x="400" y="50" text-anchor="middle" fill="#f7f5f0" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="600">Schedule Builder</text>
+  <text x="400" y="72" text-anchor="middle" fill="rgba(247,245,240,.72)" font-family="monospace" font-size="12">Draft — Week 30 · Not yet published</text>
+  <rect x="30" y="90" width="740" height="470" fill="rgba(247,245,240,.06)" rx="6" stroke="rgba(247,245,240,.12)" stroke-width="1"/>
+  <rect x="50" y="110" width="220" height="60" fill="rgba(232,200,122,.08)" rx="4" stroke="#e8c87a" stroke-width="1"/>
+  <text x="65" y="132" fill="#e8c87a" font-family="monospace" font-size="10">CONFLICT PANEL</text>
+  <text x="65" y="155" fill="#f7f5f0" font-family="monospace" font-size="12">2 warnings · 1 double-booking</text>
+  <rect x="290" y="110" width="220" height="60" fill="rgba(247,245,240,.04)" rx="4" stroke="rgba(247,245,240,.12)" stroke-width="1"/>
+  <text x="305" y="132" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">OVERRIDES</text>
+  <text x="305" y="155" fill="#f7f5f0" font-family="monospace" font-size="12">1 manager override active</text>
+  <rect x="530" y="110" width="220" height="60" fill="rgba(247,245,240,.04)" rx="4" stroke="rgba(247,245,240,.12)" stroke-width="1"/>
+  <text x="545" y="132" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">LEGEND</text>
+  <rect x="550" y="142" width="10" height="10" fill="#e8c87a" rx="2"/><text x="568" y="152" fill="rgba(247,245,240,.72)" font-family="monospace" font-size="10">Staffed</text>
+  <rect x="610" y="142" width="10" height="10" fill="rgba(247,245,240,.2)" rx="2"/><text x="628" y="152" fill="rgba(247,245,240,.72)" font-family="monospace" font-size="10">Unstaffed</text>
+  <text x="80" y="210" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">EMPLOYEE</text>
+  <text x="200" y="210" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">MON</text>
+  <text x="270" y="210" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">TUE</text>
+  <text x="340" y="210" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">WED</text>
+  <text x="410" y="210" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">THU</text>
+  <text x="480" y="210" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">FRI</text>
+  <text x="550" y="210" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">SAT</text>
+  <text x="620" y="210" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">SUN</text>
+  <line x1="60" y1="220" x2="740" y2="220" stroke="rgba(247,245,240,.1)" stroke-width="1"/>
+  <text x="80" y="250" fill="#f7f5f0" font-family="Arial,Helvetica,sans-serif" font-size="13">Alice Chen</text>
+  <rect x="195" y="235" width="50" height="22" fill="#e8c87a" rx="3"/><text x="220" y="251" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="9">AM</text>
+  <rect x="265" y="235" width="50" height="22" fill="#e8c87a" rx="3"/><text x="290" y="251" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="9">AM</text>
+  <rect x="335" y="235" width="50" height="22" fill="#e8c87a" rx="3"/><text x="360" y="251" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="9">AM</text>
+  <rect x="475" y="235" width="50" height="22" fill="#e8c87a" rx="3"/><text x="500" y="251" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="9">AM</text>
+  <text x="80" y="285" fill="#f7f5f0" font-family="Arial,Helvetica,sans-serif" font-size="13">Ben Lim</text>
+  <rect x="335" y="270" width="50" height="22" fill="#e8c87a" rx="3"/><text x="360" y="286" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="9">PM</text>
+  <rect x="405" y="270" width="50" height="22" fill="#e8c87a" rx="3"/><text x="430" y="286" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="9">PM</text>
+  <rect x="545" y="270" width="50" height="22" fill="#e8c87a" rx="3"/><text x="570" y="286" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="9">PM</text>
+  <text x="80" y="320" fill="#f7f5f0" font-family="Arial,Helvetica,sans-serif" font-size="13">Sara Tan</text>
+  <rect x="335" y="305" width="50" height="22" fill="rgba(247,245,240,.2)" rx="3" stroke="rgba(247,245,240,.3)" stroke-width="1" stroke-dasharray="3"/>
+  <text x="360" y="321" text-anchor="middle" fill="rgba(247,245,240,.4)" font-family="monospace" font-size="9">OPEN</text>
+  <text x="80" y="355" fill="#f7f5f0" font-family="Arial,Helvetica,sans-serif" font-size="13">David Wong</text>
+  <rect x="195" y="340" width="50" height="22" fill="rgba(232,200,122,.5)" rx="3" stroke="#e8c87a" stroke-width="1.5"/>
+  <text x="220" y="356" text-anchor="middle" fill="#f7f5f0" font-family="monospace" font-size="9">SWAP</text>
+  <rect x="405" y="340" width="50" height="22" fill="#e8c87a" rx="3"/><text x="430" y="356" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="9">AM</text>
+  <rect x="475" y="340" width="50" height="22" fill="#e8c87a" rx="3"/><text x="500" y="356" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="9">AM</text>
+  <text x="80" y="390" fill="#f7f5f0" font-family="Arial,Helvetica,sans-serif" font-size="13">Emma Noor</text>
+  <rect x="195" y="375" width="50" height="22" fill="#e8c87a" rx="3"/><text x="220" y="391" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="9">AM</text>
+  <rect x="335" y="375" width="50" height="22" fill="rgba(247,245,240,.2)" rx="3" stroke="rgba(255,100,100,.5)" stroke-width="1.5"/>
+  <text x="360" y="391" text-anchor="middle" fill="rgba(255,100,100,.7)" font-family="monospace" font-size="8">OVR</text>
+  <rect x="475" y="375" width="50" height="22" fill="#e8c87a" rx="3"/><text x="500" y="391" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="9">AM</text>
+  <rect x="545" y="375" width="50" height="22" fill="#e8c87a" rx="3"/><text x="570" y="391" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="9">PM</text>
+  <rect x="50" y="420" width="700" height="50" fill="rgba(247,245,240,.04)" rx="4" stroke="rgba(247,245,240,.12)" stroke-width="1"/>
+  <text x="65" y="440" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">AVAILABILITY OVERLAYS</text>
+  <text x="65" y="458" fill="rgba(247,245,240,.72)" font-family="monospace" font-size="11">Alice (AM) · Ben (PM) · Sara (PM) · David (AM) · Emma (AM,PM) — 3 available Wed AM, 2 available Thu PM</text>
+  <rect x="530" y="490" width="100" height="36" fill="#e8c87a" rx="6"/>
+  <text x="580" y="513" text-anchor="middle" fill="#4a6b8a" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="600">Publish</text>
+  <rect x="640" y="490" width="100" height="36" fill="rgba(247,245,240,.06)" rx="6" stroke="rgba(247,245,240,.12)" stroke-width="1"/>
+  <text x="690" y="513" text-anchor="middle" fill="rgba(247,245,240,.72)" font-family="Arial,Helvetica,sans-serif" font-size="14">Save Draft</text>
+</svg>

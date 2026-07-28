@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <rect width="800" height="600" fill="#4a6b8a" rx="8"/>
+  <text x="400" y="50" text-anchor="middle" fill="#f7f5f0" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="600">Availability</text>
+  <text x="400" y="72" text-anchor="middle" fill="rgba(247,245,240,.72)" font-family="monospace" font-size="12">Set your weekly availability for Week 30</text>
+  <rect x="40" y="95" width="720" height="460" fill="rgba(247,245,240,.06)" rx="6" stroke="rgba(247,245,240,.12)" stroke-width="1"/>
+  <text x="60" y="130" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">DAY</text>
+  <text x="160" y="130" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">AM (8-12)</text>
+  <text x="380" y="130" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">PM (12-6)</text>
+  <text x="600" y="130" fill="rgba(247,245,240,.55)" font-family="monospace" font-size="10">EVE (6-10)</text>
+  <line x1="40" y1="140" x2="760" y2="140" stroke="rgba(247,245,240,.1)" stroke-width="1"/>
+  <text x="60" y="185" fill="#f7f5f0" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="500">Mon 28 Jul</text>
+  <rect x="155" y="170" width="140" height="28" fill="#e8c87a" rx="14"/><text x="225" y="190" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="11" font-weight="600">Available</text>
+  <rect x="375" y="170" width="140" height="28" fill="rgba(247,245,240,.12)" rx="14"/><text x="445" y="190" text-anchor="middle" fill="rgba(247,245,240,.4)" font-family="monospace" font-size="11">Unavailable</text>
+  <rect x="595" y="170" width="140" height="28" fill="rgba(247,245,240,.12)" rx="14"/><text x="665" y="190" text-anchor="middle" fill="rgba(247,245,240,.4)" font-family="monospace" font-size="11">Unavailable</text>
+  <line x1="40" y1="215" x2="760" y2="215" stroke="rgba(247,245,240,.06)" stroke-width="1"/>
+  <text x="60" y="250" fill="#f7f5f0" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="500">Tue 29 Jul</text>
+  <rect x="155" y="235" width="140" height="28" fill="#e8c87a" rx="14"/><text x="225" y="255" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="11" font-weight="600">Available</text>
+  <rect x="375" y="235" width="140" height="28" fill="#e8c87a" rx="14"/><text x="445" y="255" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="11" font-weight="600">Available</text>
+  <rect x="595" y="235" width="140" height="28" fill="rgba(247,245,240,.12)" rx="14"/><text x="665" y="255" text-anchor="middle" fill="rgba(247,245,240,.4)" font-family="monospace" font-size="11">Unavailable</text>
+  <line x1="40" y1="280" x2="760" y2="280" stroke="rgba(247,245,240,.06)" stroke-width="1"/>
+  <text x="60" y="315" fill="#f7f5f0" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="500">Wed 30 Jul</text>
+  <rect x="155" y="300" width="140" height="28" fill="rgba(247,245,240,.12)" rx="14"/><text x="225" y="320" text-anchor="middle" fill="rgba(247,245,240,.4)" font-family="monospace" font-size="11">Unavailable</text>
+  <rect x="375" y="300" width="140" height="28" fill="#e8c87a" rx="14"/><text x="445" y="320" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="11" font-weight="600">Available</text>
+  <rect x="595" y="300" width="140" height="28" fill="rgba(247,245,240,.12)" rx="14"/><text x="665" y="320" text-anchor="middle" fill="rgba(247,245,240,.4)" font-family="monospace" font-size="11">Unavailable</text>
+  <line x1="40" y1="345" x2="760" y2="345" stroke="rgba(247,245,240,.06)" stroke-width="1"/>
+  <text x="60" y="380" fill="#f7f5f0" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="500">Thu 31 Jul</text>
+  <rect x="155" y="365" width="140" height="28" fill="#e8c87a" rx="14"/><text x="225" y="385" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="11" font-weight="600">Available</text>
+  <rect x="375" y="365" width="140" height="28" fill="#e8c87a" rx="14"/><text x="445" y="385" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="11" font-weight="600">Available</text>
+  <rect x="595" y="365" width="140" height="28" fill="#e8c87a" rx="14"/><text x="665" y="385" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="11" font-weight="600">Available</text>
+  <line x1="40" y1="410" x2="760" y2="410" stroke="rgba(247,245,240,.06)" stroke-width="1"/>
+  <text x="60" y="445" fill="#f7f5f0" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="500">Fri 01 Aug</text>
+  <rect x="155" y="430" width="140" height="28" fill="#e8c87a" rx="14"/><text x="225" y="450" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="11" font-weight="600">Available</text>
+  <rect x="375" y="430" width="140" height="28" fill="#e8c87a" rx="14"/><text x="445" y="450" text-anchor="middle" fill="#4a6b8a" font-family="monospace" font-size="11" font-weight="600">Available</text>
+  <rect x="595" y="430" width="140" height="28" fill="rgba(247,245,240,.12)" rx="14"/><text x="665" y="450" text-anchor="middle" fill="rgba(247,245,240,.4)" font-family="monospace" font-size="11">Unavailable</text>
+  <rect x="600" y="500" width="120" height="36" fill="#e8c87a" rx="6"/>
+  <text x="660" y="523" text-anchor="middle" fill="#4a6b8a" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="600">Save</text>
+</svg>

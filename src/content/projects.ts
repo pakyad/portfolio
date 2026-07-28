@@ -207,12 +207,18 @@ export const projects: Project[] = [
   {
     slug: "rosta",
     title: "Rosta",
-    thesis: "Enterprise shift scheduling with multi-tenant organizations, configurable roles, and full employee lifecycle.",
+    thesis: "A save-this-week scheduling platform for shift-based teams that juggle availability, swaps, time-off, and slot assignments across seven days.",
     role: "Solo personal project",
     status: "prototype",
     problem: "Cafe teams manage schedules through spreadsheets or expensive SaaS tools. Most shift scheduling apps are overbuilt for enterprise or too rigid for small teams.",
     keyConstraint: "Multi-tenant RLS with configurable roles - every query scoped to organization_id, permissions stored as jsonb on the role, not hardcoded.",
     systemDecision: "Built with Next.js 16 Server Actions (no API routes), Supabase Postgres with RLS, and a deterministic role model where permissions are jsonb checked via a single user_has_permission() SQL function. Route groups for layout sharing, safe-to-re-run migrations (every create/add/drop guarded with if not exists), and flattened URLs via next.config.ts redirects.",
+    overview: "ROSTA is a save-this-week scheduling platform for shift-based teams that juggle availability, swaps, time-off, and slot assignments across seven days. Built with Next.js 16 App Router, Supabase Postgres + Auth, and Tailwind CSS v4. Every page and action enforces the caller's permissions; roles are configurable per organization.",
+    systemLayers: [
+      { label: "Permission-Based Authorization Layer", description: "React.cache()-deduped getCurrentContext(), requirePermission()/requireServerPermission() guards on every page and action, scope.action convention (schedule.manage, swaps.manage_all, etc.), 4 configurable roles." },
+      { label: "Multi-Tenant Data Layer", description: "organization_id filter on every query, Supabase RLS with user_org_id() + user_has_permission() helpers, full schema covering shifts, swaps, availability, time-off, preferences, history, reports." },
+      { label: "Schedule Builder & Conflict Engine", description: "Editable 7x3 grid with real-time client-side validation (unstaffed, override, double-booked), one-click publish with notifications." },
+    ],
     trace: [
       { constraint: "Permissions checked on every operation", system: "Single user_has_permission() SQL function checking jsonb permissions - no hardcoded role checks in app code" },
       { constraint: "Migrations must survive re-runs without errors", system: "Every create table / add column / create policy wrapped in if-not-exists / drop-if-exists guards - entire migration replayable" },
@@ -226,12 +232,42 @@ export const projects: Project[] = [
     technology: [
       "Next.js 16 (App Router)",
       "React 19",
-      "Tailwind CSS v4",
       "Supabase (Postgres, Auth, RLS)",
+      "Tailwind CSS v4",
       "Waldenburg + Inter (ElevenLabs design system)",
     ],
     outcome: "Route groups ((dashboard)) don't change URL paths - (dashboard)/page.tsx and root page.tsx both map to / and conflict. Server actions with redirect() thrown inside them need the calling client to NOT catch the error - Next.js intercepts at the transport level. next.config.ts redirects need a dev server restart; HMR doesn't pick them up. Tailwind v4 @theme is powerful but custom utilities must be explicitly defined or they silently fall back to defaults.",
-    media: { poster: "", gallery: [] },
+    media: {
+      poster: "/screenshots/poster.svg",
+      posterCaption: "ROSTA replaces chaotic messaging and spreadsheets with a centralized, permission-governed schedule that every employee can access, every manager can build, and every organization can trust.",
+      gallery: [
+        {
+          src: "/screenshots/weekly-schedule.svg",
+          alt: "ROSTA weekly schedule showing published shifts with employee names and swap controls",
+          title: "Weekly Schedule",
+          featured: true,
+          caption: "Published schedule — employee names across a 7-day grid with swap request controls and last-updated timestamp.",
+        },
+        {
+          src: "/screenshots/schedule-builder.svg",
+          alt: "ROSTA schedule builder with availability overlays, override warnings, and conflict panel",
+          title: "Schedule Builder",
+          caption: "Manager builder — availability overlays, override warnings for unstaffed/double-booked slots, and a real-time conflict panel.",
+        },
+        {
+          src: "/screenshots/availability-form.svg",
+          alt: "ROSTA availability form with day-by-day toggles for each shift slot",
+          title: "Availability Form",
+          caption: "Availability — day-by-day toggle per shift slot, feeding directly into the builder overlay so managers see who is free.",
+        },
+        {
+          src: "/screenshots/roles-permissions.svg",
+          alt: "ROSTA roles and permissions screen showing 4 roles with scope.action permission lists and member counts",
+          title: "Roles & Permissions",
+          caption: "Roles — 4 configurable roles (Admin, Manager, Employee, Viewer) with scope.action permission lists and member counts.",
+        },
+      ],
+    },
   },
 ];
 
