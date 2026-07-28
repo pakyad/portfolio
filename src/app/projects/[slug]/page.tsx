@@ -7,6 +7,7 @@ import ProjectScreenshot from "@/components/projects/ProjectScreenshot";
 import ProjectOutcome from "@/components/projects/ProjectOutcome";
 import ProjectNavigator from "@/components/projects/ProjectNavigator";
 import ReadingProgress from "@/components/projects/ReadingProgress";
+import ScrollReveal from "@/components/ScrollReveal";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -38,10 +39,10 @@ export default async function ProjectPage({ params }: Props) {
     <article className="project-detail">
       <ReadingProgress />
       <ProjectHero project={project} />
-      <ProjectScreenshot project={project} variant="feature" />
+      <ScrollReveal staggerDelay={120} distance={32}><ProjectScreenshot project={project} variant="feature" /></ScrollReveal>
 
-      <ProjectScreenshot project={project} variant="supporting" />
-      <ProjectOutcome project={project} />
+      <ScrollReveal staggerDelay={120} distance={32}><ProjectScreenshot project={project} variant="supporting" /></ScrollReveal>
+      <ScrollReveal staggerDelay={100} distance={24}><ProjectOutcome project={project} /></ScrollReveal>
       <ProjectNavigator project={project} />
     </article>
   );
