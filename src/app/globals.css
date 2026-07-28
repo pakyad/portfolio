@@ -115,7 +115,8 @@ body.is-touch .spotlight-label {
 .info-map { margin-top: 12px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; position: relative; }
 .location-map { width: 100%; }
 .interactive-map-canvas { width: 100%; height: auto; aspect-ratio: 800 / 600; display: block; cursor: crosshair; border-radius: 4px; }
-.info-map-label { margin: 0; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.info-map-label-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px; }
+.info-map-label { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
 .info-map-status { color: var(--accent); font-family: monospace; font-size: 13px; letter-spacing: 0; text-transform: none; }
 
 .contact-section { min-height: 70svh; }
@@ -123,7 +124,7 @@ body.is-touch .spotlight-label {
 .contact-section > p:not(.eyebrow) { max-width: 30rem; margin: 0 0 52px; color: var(--muted); font-size: 1.1rem; line-height: 1.45; }
 
 .contact-links { display: flex; flex-direction: column; gap: 8px; }
-.contact-link { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-family: monospace; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; width: fit-content; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-weight: 600; }
+.contact-link { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; width: fit-content; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-weight: 600; }
 .contact-link:hover { opacity: .7; }
 .contact-link:hover .contact-arrow { transform: translate(2px, -2px); }
 .contact-arrow { font-size: 12px; opacity: .7; transition: transform .2s ease; display: inline-block; }
