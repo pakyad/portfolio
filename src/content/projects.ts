@@ -85,7 +85,7 @@ export const projects: Project[] = [
           caption: "Campus services - student tools and services are available from the same app.",
         },
         {
-          src: "/projects/pulse/pulse-price-review.png",
+          src: "/projects/pulse/pulse-price-review-updated.png",
           alt: "Pulse AI price review showing a suggested campus price limit",
           title: "Designed for fairer prices",
           featured: true,
