@@ -71,12 +71,14 @@
     const key = el.getAttribute("data-sound");
     if (!sounds[key]) return;
     el.addEventListener("mouseenter", () => sounds[key]());
+    el.addEventListener("click", () => sounds[key]());
   });
 
   const heroLogo = document.querySelector("[data-hero-logo]");
   if (heroLogo) {
     heroLogo.addEventListener("mouseenter", () => sounds.heartbeat());
     heroLogo.addEventListener("click", () => {
+      sounds.heartbeat();
       sounds.arpeggio();
       heroLogo.classList.add("spin-fast");
       setTimeout(() => heroLogo.classList.remove("spin-fast"), 900);
@@ -84,8 +86,9 @@
   }
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
 
-  if (!prefersReducedMotion) {
+  if (!prefersReducedMotion && !isTouchDevice) {
     document.querySelectorAll("[data-magnetic]").forEach((el) => {
       const strength = parseFloat(el.getAttribute("data-magnetic")) || 0.3;
 

@@ -59,6 +59,7 @@ export default function HorizontalIndex() {
   const rafRef = useRef<number>(0);
 
   useEffect(() => {
+    if (matchMedia("(pointer: coarse)").matches) return;
     const handleMouse = (e: MouseEvent) => {
       mouseRef.current = { x: e.clientX, y: e.clientY };
     };
@@ -244,8 +245,6 @@ export default function HorizontalIndex() {
       const isTouch = matchMedia("(pointer: coarse)").matches;
 
       if (isTouch) {
-        document.body.classList.add("is-touch");
-
         scrollObserver = new IntersectionObserver(
           (entries) => {
             const allRows = (list as HTMLElement).querySelectorAll<HTMLElement>(".project-row");

@@ -51,6 +51,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <a href="#main-content" className="skip-link">Skip to main content</a>
         <div id="main-content" tabIndex={-1}><PortfolioShell>{children}</PortfolioShell></div>
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js" strategy="beforeInteractive" />
+        <Script id="touch-detect" strategy="afterInteractive">{`
+          if (matchMedia("(pointer: coarse)").matches) document.body.classList.add("is-touch");
+        `}</Script>
         <Script src="/interactive-sound.js" strategy="afterInteractive" />
       </body>
     </html>
