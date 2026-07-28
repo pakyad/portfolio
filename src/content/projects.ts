@@ -60,7 +60,7 @@ export const projects: Project[] = [
       "Recharts",
       "Google Maps + Leaflet",
     ],
-    outcome: "The key challenge wasn't the AI - it was designing a fallback system that keeps the student in control while still providing helpful guidance. The layered approach means most listings get a data-driven suggestion, and the AI only fires when live data isn't available.",
+    outcome: "Foundation — The technology is the easy part. The hard part is designing a system that helps people without making them feel controlled. Students should still make the final call on their prices. The system suggests, it does not decide. System — Three layers that fall through gracefully. Check the fastest cheapest source first (Firestore cache), then the live web (SerpAPI), then AI only when nothing else exists. Each layer is independent, so one failing never breaks the whole thing. Problems solved — No price reference exists for similar items on campus. External market data fills the gap. A raw suggested price can feel confusing or ignored. Present it during a dedicated review step with the original price side by side. The system should not overrule the student. Cap at 90% of the ceiling — the student still makes the final call.",
     overview: "Pulse is a campus commerce platform. Students buy and sell items, merchants manage listings and orders, runners handle deliveries, and admins oversee the platform.",
     priceGuidance: [
       "Pulse helps students price comparable items more fairly.",
@@ -171,7 +171,7 @@ export const projects: Project[] = [
       "SQLite / PostgreSQL",
       "GitHub Actions CI",
     ],
-    outcome: "Saving is easy. Returning is hard. Good resurfacing makes users feel the app respects their time. URL normalisation is deceptively complex — trailing slashes, encoding, protocol-relative URLs. Getting it wrong means duplicates. Deterministic systems are easier to debug, test, and explain — but need more tuning surface area. Inertia.js eliminates the need for a separate API layer while keeping the frontend reactive. Adding the React Native app later required designing a JSON API that didn't duplicate the existing Inertia controllers.",
+    outcome: "Foundation — Saving is easy, returning is hard. Every bookmarking app lets you save things fast. The real problem is nobody builds for the moment you come back. Laterlah flips that — the entire product is designed around making the return feel good, not just the save. System — Keep it simple enough to trust. I chose a straightforward scoring system over AI because if the app is going to decide what to show you, you should be able to understand why. No black box. The downside is you have to tune more knobs yourself, but you always know what is happening. Problems solved — URLs that look the same but are not (with or without www, UTM tags, trailing slashes). Had to build a normaliser that catches all the edge cases or you get duplicates. Fetching page metadata without slowing down the save — save happens instantly, metadata arrives seconds later. Adding a mobile app later meant restructuring the backend to serve both the web app and the React Native app without duplicating code.",
     media: {
       poster: "/projects/laterlah/laterlah-today.svg",
       posterCaption: "LaterLah Today — the daily resurfacing view with editorial card labels and a calm, warm interface.",
@@ -236,7 +236,7 @@ export const projects: Project[] = [
       "Tailwind CSS v4",
       "Waldenburg + Inter (ElevenLabs design system)",
     ],
-    outcome: "Route groups ((dashboard)) don't change URL paths - (dashboard)/page.tsx and root page.tsx both map to / and conflict. Server actions with redirect() thrown inside them need the calling client to NOT catch the error - Next.js intercepts at the transport level. next.config.ts redirects need a dev server restart; HMR doesn't pick them up. Tailwind v4 @theme is powerful but custom utilities must be explicitly defined or they silently fall back to defaults.",
+    outcome: "Foundation — Who is looking matters more than what they see. In a scheduling app, a manager, an employee, and a viewer should all see completely different things. Instead of handling this case by case, the whole system was built around a single rule: check who the user is, then decide what they can do. System — No middleman. Built with Server Actions — the frontend talks directly to the database without a separate API layer. Fewer files, less code. The tradeoff is some patterns that work with traditional APIs do not work here and took time to figure out. Problems solved — Every organisation data stays separate. One wrong query and an employee sees another company schedule. The database enforces this at every level. Publishing a schedule with conflicts (double-booked shifts, unstaffed slots) — the builder catches these in real time before anyone hits publish. Roles that actually make sense — Admin, Manager, Employee, Viewer. Each has exactly the permissions they need, nothing more. Stored in a way that is easy to change without redeploying.",
     media: {
       poster: "/screenshots/poster.svg",
       posterCaption: "ROSTA replaces chaotic messaging and spreadsheets with a centralized, permission-governed schedule that every employee can access, every manager can build, and every organization can trust.",
