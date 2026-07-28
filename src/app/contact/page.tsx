@@ -8,7 +8,6 @@ export const metadata: Metadata = {
 
 const links = [
   { label: "Email", href: `mailto:${site.email}` },
-  { label: "GitHub", href: site.social.github },
   { label: "WhatsApp", href: "https://wa.link/6hec7n" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/iyadiman" },
 ];
