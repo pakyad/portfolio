@@ -20,7 +20,7 @@ export interface Project {
   overview?: string;
   priceGuidance?: string[];
   runnerDescription?: string;
-  media: { poster: string; posterCaption?: string; gallery: { src: string; alt: string; caption: string; title?: string; featured?: boolean }[] };
+  media: { poster: string; posterCaption?: string; posterSecondary?: string; posterSecondaryCaption?: string; gallery: { src: string; alt: string; caption: string; title?: string; featured?: boolean }[] };
 }
 
 export const projects: Project[] = [
@@ -71,6 +71,8 @@ export const projects: Project[] = [
     media: {
       poster: "/projects/pulse/pulse-home-updated.png",
       posterCaption: "Pulse home - campus services, student tools, and commerce in one place.",
+      posterSecondary: "/projects/pulse/pulse-marketplace-updated.png",
+      posterSecondaryCaption: "Marketplace - students browse active listings across campus.",
       gallery: [
         {
           src: "/projects/pulse/pulse-marketplace.png",

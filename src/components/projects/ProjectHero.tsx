@@ -1,3 +1,5 @@
+"use client";
+
 import type { Project } from "@/content/projects";
 import MonoLabel from "@/components/ui/MonoLabel";
 import ScreenshotFrame from "@/components/projects/ScreenshotFrame";
@@ -13,7 +15,18 @@ export default function ProjectHero({ project }: { project: Project }) {
           <div className="project-hero-meta"><MonoLabel className="project-hero-meta-label">Role</MonoLabel><p className="project-hero-meta-value">{project.role}</p></div>
           <ProjectTechStack project={project} />
         </div>
-        {project.media.poster && <ScreenshotFrame src={project.media.poster} alt={`${project.title} home screen`} caption={project.media.posterCaption ?? `${project.title} overview.`} className="screenshot-card-hero" priority />}
+        <div className="poster-stack">
+          {project.media.poster && (
+            <div className="poster-stack-front">
+              <ScreenshotFrame src={project.media.poster} alt={`${project.title} home screen`} caption={project.media.posterCaption ?? `${project.title} overview.`} className="screenshot-card-hero" priority />
+            </div>
+          )}
+          {project.media.posterSecondary && (
+            <div className="poster-stack-back">
+              <ScreenshotFrame src={project.media.posterSecondary} alt={`${project.title} marketplace`} caption={project.media.posterSecondaryCaption ?? `${project.title} marketplace.`} className="screenshot-card-hero" />
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
