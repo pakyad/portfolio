@@ -13,17 +13,17 @@ const anton = Anton({
   variable: "--font-anton",
   display: "swap",
 });
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio-iyad-s-projects1.vercel.app";
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#6587ab" };
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: { default: "Muhammad Iyad Iman Mohmad Nazri — Portfolio", template: "%s — Muhammad Iyad" },
-  description: "Portfolio of Muhammad Iyad Iman Mohmad Nazri, a Software Engineering student.",
+  title: { default: "Muhammad Iyad Iman Mohmad Nazri - Portfolio", template: "%s - Muhammad Iyad" },
+  description: "Portfolio of Iyad Iman, a designer and developer building clear, useful digital products.",
   openGraph: {
-    title: "Muhammad Iyad Iman Mohmad Nazri — Portfolio",
-    description: "Portfolio of Muhammad Iyad Iman Mohmad Nazri, a Software Engineering student.",
+    title: "Muhammad Iyad Iman Mohmad Nazri - Portfolio",
+    description: "Portfolio of Iyad Iman, a designer and developer building clear, useful digital products.",
     url: baseUrl,
     siteName: "Muhammad Iyad",
     locale: "en_US",
@@ -32,12 +32,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Muhammad Iyad Iman Mohmad Nazri — Portfolio",
-    description: "Portfolio of Muhammad Iyad Iman Mohmad Nazri, a Software Engineering student.",
+    title: "Muhammad Iyad Iman Mohmad Nazri - Portfolio",
+    description: "Portfolio of Iyad Iman, a designer and developer building clear, useful digital products.",
     images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
-  icons: { icon: [{ url: "/favicon.svg", type: "image/svg+xml" }, { url: "/favicon.ico", sizes: "any" }], apple: [{ url: "/apple-icon.png" }] },
+  icons: { icon: [{ url: "/favicon.svg", type: "image/svg+xml" }, { url: "/favicon.ico", sizes: "any" }] },
 };
 
 import PortfolioShell from "@/components/shell/PortfolioShell";

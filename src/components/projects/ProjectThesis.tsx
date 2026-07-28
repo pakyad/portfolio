@@ -10,7 +10,7 @@ export default function ProjectThesis({ project, variant }: ProjectThesisProps) 
 
   return (
     <section className={`project-thesis project-thesis-${variant}`}>
-      <div className="grid-row"><div className="grid-col-8"><MonoLabel className="project-section-label">{isProblem ? "02 / The Problem" : "03 / What I Built"}</MonoLabel><h2 className="project-chapter-title">{isProblem ? "Buying and selling lived in scattered chats." : "One place for campus commerce."}</h2><p className="project-body-text project-story-copy">{content}</p></div></div>
+      <div className="grid-row"><div className="grid-col-8"><MonoLabel className="project-section-label">{isProblem ? "The Problem" : "What I Built"}</MonoLabel><h2 className="project-chapter-title">{isProblem ? "Buying and selling lived in scattered chats." : "One place for campus commerce."}</h2><p className="project-body-text project-story-copy">{content}</p></div></div>
     </section>
   );
 }

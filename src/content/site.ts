@@ -1,12 +1,12 @@
-export const STATUS = "seeking an internship — 12 Oct 2026 - 12 Feb 2027";
+export const STATUS = "seeking an internship - 12 Oct 2026 - 12 Feb 2027";
 
 export const site = {
-  title: "Muhammad Iyad Iman Mohmad Nazri — Portfolio",
+  title: "Muhammad Iyad Iman Mohmad Nazri - Portfolio",
   shortName: "Muhammad Iyad",
-  thesis: "A student focused on building — systems, tools, and side projects shaped by curiosity.",
+  thesis: "A student focused on building - systems, tools, and side projects shaped by curiosity.",
   description:
-    "Portfolio of Muhammad Iyad Iman — a student focused on building systems, tools, and side projects.",
-  url: "https://iyad.dev",
+    "Portfolio of Muhammad Iyad Iman - a student focused on building systems, tools, and side projects.",
+  url: "https://portfolio-iyad-s-projects1.vercel.app",
   ogImage: "/og.jpg",
   email: "iyadmohmadnazri@gmail.com",
   social: {

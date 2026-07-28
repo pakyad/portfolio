@@ -15,16 +15,25 @@ export default function ProjectScreenshot({ project, variant }: { project: Proje
       <div className="grid-row">
         <div className="grid-col-full">
           {variant === "hero" && (
-            <ScreenshotFrame src={project.media.poster} alt={`${project.title} home screen`} caption={`01 — ${project.media.posterCaption ?? `${project.title} overview.`}`} className="screenshot-card-hero" priority />
+            <ScreenshotFrame src={project.media.poster} alt={`${project.title} home screen`} caption={`01 - ${project.media.posterCaption ?? `${project.title} overview.`}`} className="screenshot-card-hero" priority />
           )}
           {variant === "feature" && featuredImage && (
             <div className="featured-screenshot">
-              <div className="featured-copy"><p className="project-section-label">03</p><h2>Fair Price Guidance</h2>{(project.priceGuidance ?? [project.systemDecision]).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
-              <ScreenshotFrame src={featuredImage.src} alt={featuredImage.alt} caption={`02 — ${featuredImage.caption}`} className="screenshot-card-featured" />
+              <div className="featured-copy">
+                <h2>{featuredImage.title || "Feature"}</h2>
+                {project.priceGuidance && <p>{project.priceGuidance.join(" ")}</p>}
+              </div>
+              <ScreenshotFrame src={featuredImage.src} alt={featuredImage.alt} caption={featuredImage.caption} className="screenshot-card-featured" />
             </div>
           )}
           {variant === "supporting" && supportingImage && (
-            <div className="supporting-screenshot"><div className="supporting-copy"><p className="project-section-label">04</p><h2>Campus Runners</h2>{project.runnerDescription && <p>{project.runnerDescription}</p>}</div><ScreenshotFrame src={supportingImage.src} alt={supportingImage.alt} caption={`03 — ${supportingImage.caption}`} className="screenshot-card-supporting" /></div>
+            <div className="supporting-screenshot supporting-screenshot--reverse">
+              <ScreenshotFrame src={supportingImage.src} alt={supportingImage.alt} caption={supportingImage.caption} className="screenshot-card-supporting" />
+              <div className="supporting-copy">
+                <h2>{supportingImage.title || "Supporting"}</h2>
+                {project.runnerDescription && <p>{project.runnerDescription}</p>}
+              </div>
+            </div>
           )}
         </div>
       </div>

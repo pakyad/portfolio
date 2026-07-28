@@ -5,11 +5,11 @@ import Link from "next/link";
 import { projects } from "@/content/projects";
 
 const categories: Record<string, string> = {
-  pulse: "Marketplace Pulse",
-  codedulu: "CodeDulu",
-  soon: "Soon",
-  laterlah: "LaterLah",
-  rosta: "Rosta",
+  pulse: "Campus commerce platform",
+  codedulu: "Developer momentum tool",
+  soon: "Context-aware reminders",
+  laterlah: "Save-for-later service",
+  rosta: "Team shift scheduling",
 };
 
 const loopPresets: Record<string, { bpm: number; chord: string[]; bass: string; arp: string[] }> = {
@@ -217,6 +217,7 @@ export default function HorizontalIndex() {
       }
 
       function stopLoop() {
+        if (!masterVol) return;
         const now = Tone.now();
         masterVol.volume.cancelScheduledValues(now);
         masterVol.volume.setValueAtTime(masterVol.volume.value, now);
@@ -224,7 +225,7 @@ export default function HorizontalIndex() {
         disposeLoops();
         currentPreset = null;
         Tone.Draw.schedule(() => {
-          masterVol.volume.value = -10;
+          if (masterVol) masterVol.volume.value = -10;
         }, now + 0.2);
       }
 
@@ -279,7 +280,10 @@ export default function HorizontalIndex() {
 
           row.addEventListener("mouseenter", () => {
             activeRowRef.current = row;
-            if (previewRef.current && image) previewRef.current.style.backgroundImage = image;
+            if (previewRef.current) {
+              if (image) previewRef.current.style.backgroundImage = image;
+              else previewRef.current.style.backgroundImage = "";
+            }
             if (previewLabelRef.current && label) previewLabelRef.current.textContent = label;
             if (previewRef.current) previewRef.current.classList.add("active");
           });
@@ -329,17 +333,12 @@ export default function HorizontalIndex() {
       <section id="work" className="work-section" aria-labelledby="work-heading">
         <h2 id="work-heading">Selected work.</h2>
         <div className="project-list" ref={listRef}>
-          {projects.map((project, i) => {
+          {[...projects].sort((a, b) => Number(a.slug === "codedulu" || a.slug === "soon") - Number(b.slug === "codedulu" || b.slug === "soon")).map((project) => {
             const unavailable = project.slug === "codedulu" || project.slug === "soon";
-            const gradients = [
-              "linear-gradient(135deg, #2a4d7a, #16305c)",
-              "linear-gradient(135deg, #3a2a6a, #1c1848)",
-              "linear-gradient(135deg, #2a6a5a, #143830)",
-            ];
+            const previewImage = project.slug === "pulse" ? "url('/projects/pulse/pulse-campus-services.png')" : undefined;
             if (unavailable) {
               return (
                 <div key={project.slug} className="project-row project-row--unavailable" aria-label={`${project.title} is under construction`}>
-                  <span className="project-num">{String(i + 1).padStart(2, "0")}</span>
                   <span className="project-category">{categories[project.slug] || "Project"}</span>
                   <h3 className="project-title">{project.title}</h3>
                   <span className="construction-tape" aria-hidden="true">Unavailable</span>
@@ -352,16 +351,14 @@ export default function HorizontalIndex() {
                 key={project.slug}
                 href={`/projects/${project.slug}`}
                 className="project-row"
-                data-image={gradients[i % gradients.length]}
-                data-label={`${project.title} — ${categories[project.slug] || "Project"}`}
+                data-image={previewImage}
+                data-label={`${project.title} - ${categories[project.slug] || "Project"}`}
                 data-loop={project.slug}
                 aria-label={`View project: ${project.title}`}
                 onClick={() => stopSoundRef.current()}
               >
-                <span className="project-num">{String(i + 1).padStart(2, "0")}</span>
                 <span className="project-category">{categories[project.slug] || "Project"}</span>
                 <h3 className="project-title">{project.title}</h3>
-                <span className="project-arrow">↗</span>
               </Link>
             );
           })}

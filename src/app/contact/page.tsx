@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: `Contact — ${site.title}`,
+  title: `Contact - ${site.title}`,
   description: "Get in touch with Muhammad Iyad Iman Mohmad Nazri.",
 };
 
 const links = [
   { label: "Email", href: `mailto:${site.email}`, value: site.email },
   { label: "GitHub", href: site.social.github, value: "github.com/pakyad" },
+  { label: "WhatsApp", href: "https://wa.link/6hec7n", value: "+60 1x-xxx 893" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/iyadiman", value: "linkedin.com/in/iyadiman" },
 ];
 
 export default function ContactPage() {

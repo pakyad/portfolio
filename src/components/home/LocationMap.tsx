@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import { DOT_POSITIONS, PENANG } from "./generated-map";
 import { InteractiveMap } from "./InteractiveMap";
+import { STATUS } from "@/content/site";
 
 const MAP_W = 800;
 const MAP_H = 600;
@@ -62,7 +63,7 @@ export function LocationMap() {
       <div ref={mapRef} className="location-map">
         <InteractiveMap positions={DOT_POSITIONS} penang={PENANG} />
       </div>
-      <p ref={labelRef} className="info-map-label">Based in Penang.</p>
+      <p ref={labelRef} className="info-map-label">Based in Penang. <span data-sound="cry" className="info-map-status">{STATUS}</span></p>
       {arrow && (
         <svg
           className="map-arrow"

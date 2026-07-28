@@ -1,5 +1,4 @@
 import type { Project } from "@/content/projects";
-import MonoLabel from "@/components/ui/MonoLabel";
 
 export default function ProjectOutcome({ project }: { project: Project }) {
   if (!project.outcome) return null;
@@ -13,16 +12,13 @@ export default function ProjectOutcome({ project }: { project: Project }) {
     <section className="project-outcome">
       <div className="grid-row">
         <div className="grid-col-8">
-          <MonoLabel className="project-section-label">What I learned</MonoLabel>
+          <p className="project-section-label">What I learned</p>
         </div>
       </div>
       <div className="grid-row">
         <div className="grid-col-8">
           {insights.map((sentence, i) => (
-            <p key={i} className="project-outcome-line">
-              <span className="project-outcome-mark">{String(i + 1).padStart(2, "0")}</span>
-              <span>{sentence}</span>
-            </p>
+            <p key={i} className="project-body-text"><span>{sentence}</span></p>
           ))}
         </div>
       </div>

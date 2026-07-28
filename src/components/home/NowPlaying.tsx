@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 
 interface NowPlayingData {
   isPlaying: boolean;
-  title: string;
-  artist: string;
-  songUrl: string;
-  albumArt?: string;
+  title?: string;
+  artist?: string;
+  songUrl?: string;
 }
 
 export function NowPlaying() {
@@ -24,22 +23,29 @@ export function NowPlaying() {
     return () => clearInterval(interval);
   }, []);
 
-  if (!data || !data.title) return null;
+  const caption = "Iyad is currently listening to this while thinking about internships.";
+
+  if (!data?.title || !data.songUrl) {
+    return (
+      <div className="now-playing">
+        <p className="now-playing-caption">{caption}</p>
+        <p className="info-clock-value">-</p>
+      </div>
+    );
+  }
 
   return (
-    <span className="now-playing-value">
-      {data.albumArt && (
-        <img src={data.albumArt} alt="" className="now-playing-art" />
-      )}
+    <div className="now-playing">
+      <p className="now-playing-caption">{caption}</p>
       <a
         href={data.songUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="now-playing-link"
+        className="now-playing-link info-clock-value"
       >
-        {data.isPlaying ? "" : "last played: "}
-        {data.title} — {data.artist}
+        {data.title}
       </a>
-    </span>
+      <p className="now-playing-artist">{data.isPlaying ? "Now playing" : "Last played"} · {data.artist}</p>
+    </div>
   );
 }

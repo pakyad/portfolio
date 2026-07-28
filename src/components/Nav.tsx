@@ -62,12 +62,12 @@ export default function Nav({ sections, activeIndex, onNavigate, total }: NavPro
       >
         {prevSection && (
           <span className="font-mono text-[10px] uppercase tracking-widest text-muted/40">
-            ← {prevSection}
+            {prevSection}
           </span>
         )}
         {nextSection && (
           <span className="font-mono text-[10px] uppercase tracking-widest text-muted/40">
-            {nextSection} →
+            {nextSection}
           </span>
         )}
       </div>
