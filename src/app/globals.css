@@ -145,7 +145,7 @@ body.is-touch .spotlight-label {
 .contact-page-title { font-family: var(--display); font-size: clamp(3rem, 7vw, 5rem); font-weight: 600; line-height: .86; letter-spacing: -.05em; margin: 0 0 20px; color: var(--ink); }
 .contact-page-desc { font-size: 1rem; line-height: 1.5; color: var(--muted); margin-bottom: 48px; max-width: 30rem; }
 
-.project-detail { --project-space: clamp(56px, 7vw, 96px); padding: 30px 0 80px; font-family: var(--font-geist-sans), Arial, sans-serif; }
+.project-detail { --project-space: clamp(56px, 7vw, 96px); padding: 120px 0 80px; font-family: var(--font-geist-sans), Arial, sans-serif; }
 .project-detail > :not(.reading-progress) { margin-bottom: var(--project-space); }
 .project-detail *, .project-detail .typo-meta { font-family: inherit; }
 .project-hero { position: relative; }

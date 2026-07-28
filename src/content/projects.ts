@@ -69,7 +69,7 @@ export const projects: Project[] = [
     ],
     runnerDescription: "Runners manage delivery missions, upload pickup and delivery proof, and complete a GPS proximity check at the drop-off point.",
     media: {
-      poster: "/projects/pulse/pulse-campus-services.png",
+      poster: "/projects/pulse/pulse-home-updated.png",
       posterCaption: "Pulse home - campus services, student tools, and commerce in one place.",
       gallery: [
         {
@@ -79,7 +79,7 @@ export const projects: Project[] = [
           caption: "Marketplace discovery - students browse active listings across campus.",
         },
         {
-          src: "/projects/pulse/pulse-campus-services.png",
+          src: "/projects/pulse/pulse-home-updated.png",
           alt: "Pulse home screen showing campus services and student directory",
           title: "One shared place",
           caption: "Campus services - student tools and services are available from the same app.",
