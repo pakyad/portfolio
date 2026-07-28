@@ -250,7 +250,7 @@ export default function HorizontalIndex() {
             const allRows = (list as HTMLElement).querySelectorAll<HTMLElement>(".project-row");
             allRows.forEach((r) => r.classList.remove("spotlight"));
             (list as HTMLElement).classList.remove("has-spotlight");
-            if (spotlightCardRef.current) { spotlightCardRef.current.style.backgroundImage = ""; spotlightCardRef.current.classList.remove("active"); }
+            if (spotlightCardRef.current) { spotlightCardRef.current.style.background = ""; spotlightCardRef.current.classList.remove("active"); }
             if (spotlightLabelRef.current) spotlightLabelRef.current.textContent = "";
             stopLoop();
 
@@ -263,7 +263,7 @@ export default function HorizontalIndex() {
             const image = row.getAttribute("data-image");
             const label = row.getAttribute("data-label");
             const loopName = row.getAttribute("data-loop");
-            if (spotlightCardRef.current && image) { spotlightCardRef.current.style.backgroundImage = image; spotlightCardRef.current.classList.add("active"); }
+            if (spotlightCardRef.current) { spotlightCardRef.current.style.background = image ? `${image} center/cover no-repeat` : ""; spotlightCardRef.current.classList.add("active"); }
             if (spotlightLabelRef.current && label) spotlightLabelRef.current.textContent = label;
             if (loopName) startLoop(loopName);
           },

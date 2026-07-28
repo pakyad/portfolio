@@ -65,6 +65,7 @@ body.is-touch #spotlight-card {
   transform: translate(-50%, -50%);
   width: min(75vw, 320px); height: min(50vw, 220px);
   border-radius: 6px; background-size: cover; background-position: center;
+  background-color: rgba(74, 107, 138, 0.6);
   z-index: 50; pointer-events: none;
   box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 }
