@@ -25,12 +25,13 @@ export default function Home() {
       </section>
       <section id="contact" className="contact-section" aria-labelledby="contact-heading">
         <p className="eyebrow">Contact</p>
-        <h2 id="contact-heading">Let’s connect.</h2>
-        <p>If you would like to discuss a project, feel free to get in touch.</p>
-        <a href={`mailto:${site.email}`} data-sound="chime">Email <span>{site.email}</span></a>
-        <a href={site.social.github} target="_blank" rel="noopener noreferrer" data-sound="chime">GitHub <span>github.com/pakyad</span></a>
-        <a href="https://wa.link/6hec7n" target="_blank" rel="noopener noreferrer" data-sound="chime">WhatsApp <span>+60 1x-xxx 893</span></a>
-        <a href="https://www.linkedin.com/in/iyadiman" target="_blank" rel="noopener noreferrer" data-sound="chime">LinkedIn <span>linkedin.com/in/iyadiman</span></a>
+        <h2 id="contact-heading">Let&rsquo;s connect.</h2>
+        <div className="contact-links">
+          <a href={`mailto:${site.email}`} data-sound="chime" className="contact-link"><span className="contact-arrow">↗</span><span className="contact-label">(Email)</span></a>
+          <a href={site.social.github} target="_blank" rel="noopener noreferrer" data-sound="chime" className="contact-link"><span className="contact-arrow">↗</span><span className="contact-label">(GitHub)</span></a>
+          <a href="https://wa.link/6hec7n" target="_blank" rel="noopener noreferrer" data-sound="chime" className="contact-link"><span className="contact-arrow">↗</span><span className="contact-label">(WhatsApp)</span></a>
+          <a href="https://www.linkedin.com/in/iyadiman" target="_blank" rel="noopener noreferrer" data-sound="chime" className="contact-link"><span className="contact-arrow">↗</span><span className="contact-label">(LinkedIn)</span></a>
+        </div>
       </section>
     </>
   );

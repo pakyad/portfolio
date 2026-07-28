@@ -11,7 +11,7 @@ const MAP_H = 600;
 export function LocationMap() {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
-  const labelRef = useRef<HTMLParagraphElement>(null);
+  const labelRef = useRef<HTMLSpanElement>(null);
   const [arrow, setArrow] = useState<{ d: string } | null>(null);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export function LocationMap() {
       <div ref={mapRef} className="location-map">
         <InteractiveMap positions={DOT_POSITIONS} penang={PENANG} />
       </div>
-      <p ref={labelRef} className="info-map-label">Based in Penang. <span data-sound="cry" className="info-map-status">{STATUS}</span></p>
+      <p className="info-map-label"><span ref={labelRef}>Based in Penang.</span> <span data-sound="cry" className="info-map-status">{STATUS}</span></p>
       {arrow && (
         <svg
           className="map-arrow"
