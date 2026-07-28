@@ -127,15 +127,15 @@ body.is-touch .spotlight-label {
 .contact-section h2 { margin: 0 0 24px; font-family: var(--display); font-size: clamp(4rem, 11vw, 11rem); font-weight: 600; line-height: .82; letter-spacing: -.07em; }
 .contact-section > p:not(.eyebrow) { max-width: 30rem; margin: 0 0 52px; color: var(--muted); font-size: 1.1rem; line-height: 1.45; }
 
-.contact-links { display: flex; flex-direction: column; gap: 8px; }
-.contact-link { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; width: fit-content; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-weight: 600; touch-action: manipulation; }
-.contact-link:active { opacity: .7; }
+.contact-links { display: flex; flex-direction: column; gap: 6px; }
+.contact-link { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: var(--ink); font-family: var(--font-geist-sans), var(--sans); font-size: 13px; letter-spacing: .02em; text-transform: none; width: fit-content; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-weight: 500; touch-action: manipulation; }
+.contact-link:active { opacity: .6; }
 .contact-link:active .contact-arrow { transform: translate(2px, -2px); }
 @media (hover: hover) {
-  .contact-link:hover { opacity: .7; }
+  .contact-link:hover { opacity: .6; }
   .contact-link:hover .contact-arrow { transform: translate(2px, -2px); }
 }
-.contact-arrow { font-size: 12px; opacity: .7; transition: transform .2s ease; display: inline-block; }
+.contact-arrow { font-size: 11px; opacity: .55; transition: transform .2s ease; display: inline-block; line-height: 1; }
 .contact-label { color: var(--ink); }
 
 .contact-page { min-height: 100svh; background: var(--navy); display: flex; align-items: center; justify-content: center; padding: 0 36px; }
