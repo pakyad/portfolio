@@ -22,7 +22,7 @@ export default function ContactPage() {
         <div className="contact-links">
           {links.map((link) => (
             <a key={link.label} href={link.href} className="contact-link" target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}>
-              <span className="contact-arrow">↗</span><span className="contact-label">({link.label})</span>
+              <span className="contact-arrow">↗︎</span><span className="contact-label">({link.label})</span>
             </a>
           ))}
         </div>

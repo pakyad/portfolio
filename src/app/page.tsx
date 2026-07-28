@@ -27,9 +27,9 @@ export default function Home() {
         <p className="eyebrow">Contact</p>
         <h2 id="contact-heading">Let&rsquo;s connect.</h2>
         <div className="contact-links">
-          <a href={`mailto:${site.email}`} data-sound="chime" className="contact-link"><span className="contact-arrow">↗</span><span className="contact-label">(Email)</span></a>
-          <a href="https://wa.link/6hec7n" target="_blank" rel="noopener noreferrer" data-sound="chime" className="contact-link"><span className="contact-arrow">↗</span><span className="contact-label">(WhatsApp)</span></a>
-          <a href="https://www.linkedin.com/in/iyadiman" target="_blank" rel="noopener noreferrer" data-sound="chime" className="contact-link"><span className="contact-arrow">↗</span><span className="contact-label">(LinkedIn)</span></a>
+          <a href={`mailto:${site.email}`} data-sound="chime" className="contact-link"><span className="contact-arrow">↗︎</span><span className="contact-label">(Email)</span></a>
+          <a href="https://wa.link/6hec7n" target="_blank" rel="noopener noreferrer" data-sound="chime" className="contact-link"><span className="contact-arrow">↗︎</span><span className="contact-label">(WhatsApp)</span></a>
+          <a href="https://www.linkedin.com/in/iyadiman" target="_blank" rel="noopener noreferrer" data-sound="chime" className="contact-link"><span className="contact-arrow">↗︎</span><span className="contact-label">(LinkedIn)</span></a>
         </div>
       </section>
     </>
