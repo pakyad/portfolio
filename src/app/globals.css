@@ -99,13 +99,6 @@ body.is-touch .spotlight-label {
 .info-field-label { margin: 0 0 4px; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
 .info-field-value { margin: 0; font-family: monospace; font-size: 13px; color: var(--accent); line-height: 1.4; }
 
-.info-clock { margin-bottom: 8px; }
-.info-clock-value { margin: 0; font-family: monospace; font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 900; line-height: 1; color: rgba(247, 245, 240, 0.2); letter-spacing: 0.02em; }
-.now-playing-caption { max-width: 22rem; margin: 0 0 14px; font-size: 11px; line-height: 1.4; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
-.now-playing-link { display: block; max-width: 9ch; color: rgba(247, 245, 240, 0.2); text-decoration: none; overflow-wrap: anywhere; transition: color .2s ease; }
-.now-playing-link:active, .now-playing-link:focus-visible { color: var(--cream); }
-@media (hover: hover) { .now-playing-link:hover { color: var(--cream); } }
-.now-playing-artist { margin: 12px 0 0; font-family: monospace; font-size: 11px; line-height: 1.4; color: var(--muted); }
 
 .info-building { margin-bottom: 8px; }
 .now-building { }
