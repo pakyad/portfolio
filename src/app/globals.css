@@ -149,7 +149,11 @@ body.is-touch .spotlight-label {
 
 .project-hero-back:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 2px; }
 .project-hero-poster { display: grid; grid-template-columns: minmax(0, 1fr) minmax(200px, 460px); align-items: end; gap: clamp(36px, 8vw, 128px); }
+.project-hero-poster--text-only { grid-template-columns: minmax(0, 760px); }
 .project-hero-copy { padding-bottom: clamp(12px, 4vw, 64px); }
+.project-live-link { display: inline-flex; align-items: center; gap: 8px; width: fit-content; margin-top: 28px; padding: 12px 18px; border: 1px solid var(--ink); border-radius: 999px; color: var(--ink); font-size: .84rem; font-weight: 600; letter-spacing: .02em; text-decoration: none; transition: background-color .2s ease, color .2s ease, transform .2s ease; }
+.project-live-link:hover { background: var(--ink); color: var(--navy); transform: translateY(-1px); }
+.project-live-link:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
 .project-hero-title { margin: 12px 0; font-family: inherit; font-size: clamp(3.5rem, 10vw, 9rem); font-weight: 600; line-height: .86; letter-spacing: -.06em; }
 .project-hero-subtitle, .project-body-text, .evidence-card-text { color: var(--muted); font-size: clamp(1rem, 1.35vw, 1.3rem); letter-spacing: .005em; line-height: 1.45; }
 .project-section-label, .project-hero-meta-label { color: var(--muted); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
