@@ -17,6 +17,7 @@ export interface Project {
   features: string[];
   technology: string[];
   outcome: string;
+  liveUrl?: string;
   overview?: string;
   priceGuidance?: string[];
   runnerDescription?: string;
@@ -24,6 +25,48 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    slug: "alder-roasters",
+    title: "ALDER ROASTERS",
+    thesis: "A production-minded specialty coffee commerce experience built as a complete portfolio case study.",
+    role: "Solo design and frontend project",
+    year: "2026",
+    status: "shipped",
+    liveUrl: "https://alder-roasters.iyadmohmadnazri.workers.dev",
+    problem: "Specialty coffee storefronts often present origin and processing details without helping less experienced customers understand what they should actually buy.",
+    keyConstraint: "The experience needed to feel like a credible premium retailer while staying honest that checkout, payment, and fulfilment are demonstrations.",
+    systemDecision: "Built the catalogue, product configuration, persistent cart, subscriptions, search, checkout validation, and editorial brew content as one typed Next.js system, then packaged it for Cloudflare Workers with OpenNext.",
+    systemLayers: [
+      { label: "Typed commerce domain", description: "Coffee, variant, cart, catalogue, validation, and money rules are separated from presentation and covered by focused tests." },
+      { label: "Complete customer journey", description: "Discovery, filtering, product configuration, persistent cart, demonstration checkout, confirmation, subscriptions, and brew education work as one coherent flow." },
+      { label: "Production delivery", description: "GitHub Actions validates formatting, linting, types, tests, browser flows, the Next.js build, and the Cloudflare Worker bundle before deployment." },
+    ],
+    trace: [
+      { constraint: "Detailed coffee information can overwhelm new buyers", system: "Turn origin, process, roast, and tasting notes into concise buying guidance and structured filters" },
+      { constraint: "A portfolio demo must not imply real payment processing", system: "Use an explicit demonstration checkout with validated fields and no sensitive payment collection" },
+      { constraint: "The same application must run reliably at the edge", system: "Package Next.js with OpenNext and validate the Worker bundle in CI before Cloudflare deployment" },
+    ],
+    features: [
+      "Seven-coffee catalogue with search and structured filtering",
+      "Product variants, grind selection, quantity, and persistent cart state",
+      "Demonstration checkout with validation and confirmation flow",
+      "Subscriptions, brew guides, sourcing story, location, FAQ, and legal content",
+      "Responsive, accessible interface with automated component and browser tests",
+    ],
+    technology: [
+      "Next.js 16 (App Router)",
+      "React 19",
+      "TypeScript",
+      "Vitest + Testing Library",
+      "Playwright",
+      "OpenNext",
+      "Cloudflare Workers",
+      "GitHub Actions",
+    ],
+    outcome: "ALDER ROASTERS is a fully deployed commerce demonstration rather than a static concept. Visitors can move from discovery to a convincing checkout journey, while recruiters can inspect the underlying domain modelling, state management, accessibility work, automated testing, CI, and Cloudflare delivery setup.",
+    overview: "ALDER ROASTERS is a fictional direct-to-consumer specialty coffee store designed to demonstrate a complete, production-minded frontend system. The project balances editorial brand presentation with practical product guidance and a transparent demonstration purchase flow.",
+    media: { poster: "", gallery: [] },
+  },
   {
     slug: "pulse",
     title: "Pulse",
