@@ -5,6 +5,7 @@ import Link from "next/link";
 import { projects } from "@/content/projects";
 
 const categories: Record<string, string> = {
+  "alder-roasters": "Specialty coffee commerce",
   pulse: "Campus commerce platform",
   codedulu: "Developer momentum tool",
   soon: "Context-aware reminders",
@@ -13,6 +14,12 @@ const categories: Record<string, string> = {
 };
 
 const loopPresets: Record<string, { bpm: number; chord: string[]; bass: string; arp: string[] }> = {
+  "alder-roasters": {
+    bpm: 92,
+    chord: ["F3", "A3", "C4", "E4"],
+    bass: "F1",
+    arp: ["F4", "A4", "C5", "E5", "C5", "A4"],
+  },
   pulse: {
     bpm: 96,
     chord: ["D3", "A3", "C4", "F#4"],
