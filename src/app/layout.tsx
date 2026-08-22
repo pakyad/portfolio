@@ -41,13 +41,11 @@ export const metadata: Metadata = {
 };
 
 import PortfolioShell from "@/components/shell/PortfolioShell";
-import LoadingScreen from "@/components/shell/LoadingScreen";
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${anton.variable}`} data-scroll-behavior="smooth">
       <body>
-        <LoadingScreen />
         <a href="#main-content" className="skip-link">Skip to main content</a>
         <div id="main-content" tabIndex={-1}><PortfolioShell>{children}</PortfolioShell></div>
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js" strategy="beforeInteractive" />
