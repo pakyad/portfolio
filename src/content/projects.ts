@@ -5,10 +5,12 @@ export type SystemLayer = { label: string; description: string };
 export interface Project {
   slug: string;
   title: string;
+  category: string;
   thesis: string;
   role: string;
   year?: string;
   status: "shipped" | "in-progress" | "prototype";
+  statusLabel?: string;
   problem: string;
   keyConstraint: string;
   systemDecision: string;
@@ -17,10 +19,15 @@ export interface Project {
   features: string[];
   technology: string[];
   outcome: string;
-  liveUrl?: string;
   overview?: string;
   priceGuidance?: string[];
   runnerDescription?: string;
+  liveUrl?: string;
+  sourceUrl?: string;
+  tests?: string;
+  deployment?: string;
+  performance?: string;
+  whatBroke?: string[];
   media: { poster: string; posterCaption?: string; posterSecondary?: string; posterSecondaryCaption?: string; gallery: { src: string; alt: string; caption: string; title?: string; featured?: boolean }[] };
 }
 
@@ -28,11 +35,12 @@ export const projects: Project[] = [
   {
     slug: "alder-roasters",
     title: "ALDER ROASTERS",
+    category: "Specialty coffee commerce",
     thesis: "A production-minded specialty coffee commerce experience built as a complete portfolio case study.",
     role: "Solo design and frontend project",
     year: "2026",
     status: "shipped",
-    liveUrl: "https://alder-roasters.iyadmohmadnazri.workers.dev",
+    statusLabel: "Shipped",
     problem: "Specialty coffee storefronts often present origin and processing details without helping less experienced customers understand what they should actually buy.",
     keyConstraint: "The experience needed to feel like a credible premium retailer while staying honest that checkout, payment, and fulfilment are demonstrations.",
     systemDecision: "Built the catalogue, product configuration, persistent cart, subscriptions, search, checkout validation, and editorial brew content as one typed Next.js system, then packaged it for Cloudflare Workers with OpenNext.",
@@ -57,22 +65,32 @@ export const projects: Project[] = [
       "Next.js 16 (App Router)",
       "React 19",
       "TypeScript",
+      "CSS custom properties",
       "Vitest + Testing Library",
-      "Playwright",
+      "Playwright + axe-core",
       "OpenNext",
       "Cloudflare Workers",
       "GitHub Actions",
     ],
-    outcome: "ALDER ROASTERS is a fully deployed commerce demonstration rather than a static concept. Visitors can move from discovery to a convincing checkout journey, while recruiters can inspect the underlying domain modelling, state management, accessibility work, automated testing, CI, and Cloudflare delivery setup.",
+    outcome: "Foundation — A storefront earns trust through honesty. The simulated checkout, no-stored-email notice and fictional-brand disclosure are shown in-product rather than buried in a footer. System — The stack is deliberately compact. Typed static content is the right boundary for this build; a CMS, payments or accounts would add operational complexity without improving the demonstrated frontend work. Problems solved — URL-backed filters keep shareable state without extra state management. Grind, size and subscription options resolve into one structured product model instead of per-page special cases. Critical journeys run under automated unit, accessibility and E2E checks before every deploy.",
     overview: "ALDER ROASTERS is a fictional direct-to-consumer specialty coffee store designed to demonstrate a complete, production-minded frontend system. The project balances editorial brand presentation with practical product guidance and a transparent demonstration purchase flow.",
+    liveUrl: "https://alder.iyadiman.me",
+    sourceUrl: "https://github.com/pakyad/alder-roasters",
+    tests: "Vitest · Testing Library · Playwright + axe-core",
+    deployment: "Cloudflare Workers (OpenNext) · GitHub Actions CI",
+    whatBroke: [
+      "Checkout could not process real payments by design — solved by making the simulation explicit at every step instead of pretending it is real.",
+    ],
     media: { poster: "", gallery: [] },
   },
   {
     slug: "pulse",
     title: "Pulse",
+    category: "Campus commerce platform",
     thesis: "A campus marketplace with AI-assisted price guidance for student listings.",
     role: "Solo final-year project · UniKL",
     status: "in-progress",
+    statusLabel: "In Development",
     problem: "Campus buying and selling often happened through WhatsApp groups and Instagram-without clear order tracking, delivery proof, or price guidance.",
     keyConstraint: "Price guidance needs to be genuinely useful without being confusing or prescriptive - students should still feel in control.",
     systemDecision: "Built a layered price engine: Firestore cache → SerpAPI scrape → Claude Haiku fallback. Student prices are capped at 90% of whatever the system determines as the ceiling.",
@@ -111,6 +129,12 @@ export const projects: Project[] = [
       "Pulse shows a suggested campus-friendly price before publishing, helping students avoid accidental overpricing while keeping the final decision with them.",
     ],
     runnerDescription: "Runners manage delivery missions, upload pickup and delivery proof, and complete a GPS proximity check at the drop-off point.",
+    sourceUrl: "https://github.com/pakyad/pulse",
+    whatBroke: [
+      "No price reference existed for similar campus items — filled the gap with external market data falling through three sources: Firestore cache → SerpAPI → Claude Haiku.",
+      "A raw suggested price felt confusing and easy to ignore — moved into a dedicated review step shown beside the student's own price.",
+      "Early design risked overruling students — capped system influence at 90% of the ceiling so the final call stays with them.",
+    ],
     media: {
       poster: "/projects/pulse/pulse-home-updated.png",
       posterCaption: "Pulse home - campus services, student tools, and commerce in one place.",
@@ -146,41 +170,13 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "codedulu",
-    title: "CodeDulu",
-    thesis: "Early side-project idea.",
-    role: "Early idea",
-    status: "prototype",
-    problem: "More details will be added as the project takes shape.",
-    keyConstraint: "The direction is still being explored.",
-    systemDecision: "CodeDulu is an early project idea.",
-    trace: [],
-    features: [],
-    technology: [],
-    outcome: "",
-    media: { poster: "", gallery: [] },
-  },
-  {
-    slug: "soon",
-    title: "Soon",
-    thesis: "Early side-project idea.",
-    role: "Early idea",
-    status: "prototype",
-    problem: "More details will be added as the project takes shape.",
-    keyConstraint: "The direction is still being explored.",
-    systemDecision: "Soon is an early project idea.",
-    trace: [],
-    features: [],
-    technology: [],
-    outcome: "",
-    media: { poster: "", gallery: [] },
-  },
-  {
     slug: "laterlah",
     title: "LaterLah",
+    category: "Save-for-later service",
     thesis: "A save-for-later service that brings content back when it matters — using deterministic scoring, not AI.",
     role: "Solo personal project",
-    status: "shipped",
+    status: "in-progress",
+    statusLabel: "In Development",
     problem: "\"Saved\" content becomes forgotten content. Every bookmarking product optimises for saving — the return experience is an afterthought.",
     keyConstraint: "No AI. Most modern resurfacing products rely on ML or LLMs. I wanted a transparent, deterministic system any developer could tune without a data science background.",
     systemDecision: "Built a deterministic scoring engine with 6 weighted factors (age, never-opened bonus, recently-opened penalty, repeat-save relevance, resurfaced-history penalty, deterministic jitter). Combined with SHA-256 URL normalisation (10 rules — lowercase, strip UTM/tracking, remove fragments, default ports, credentials), async metadata fetch via SSRF-safe queue, and a state-machine lifecycle (Waiting → Resurfaced → Opened → Completed / Snoozed). Diversity rules cap resurfacing to 3/day — top score, different domain, then oldest candidate.",
@@ -217,31 +213,36 @@ export const projects: Project[] = [
       "GitHub Actions CI",
     ],
     outcome: "Foundation — Saving is easy, returning is hard. Every bookmarking app lets you save things fast. The real problem is nobody builds for the moment you come back. Laterlah flips that — the entire product is designed around making the return feel good, not just the save. System — Keep it simple enough to trust. I chose a straightforward scoring system over AI because if the app is going to decide what to show you, you should be able to understand why. No black box. The downside is you have to tune more knobs yourself, but you always know what is happening. Problems solved — URLs that look the same but are not (with or without www, UTM tags, trailing slashes). Had to build a normaliser that catches all the edge cases or you get duplicates. Fetching page metadata without slowing down the save — save happens instantly, metadata arrives seconds later. Adding a mobile app later meant restructuring the backend to serve both the web app and the React Native app without duplicating code.",
+    whatBroke: [
+      "URLs that looked different were actually the same item (www, UTM tags, trailing slashes) — built a 10-rule normaliser or duplicates leaked through.",
+      "Fetching page metadata inline made saving feel slow — saves now complete in ~100ms; metadata arrives seconds later through an async queue.",
+      "Adding a React Native app later forced a backend restructure so web and mobile share one API surface without duplicated logic.",
+    ],
     media: {
-      poster: "/projects/laterlah/laterlah-today.svg",
+      poster: "/projects/laterlah/laterlah-today.png",
       posterCaption: "LaterLah Today — the daily resurfacing view with editorial card labels and a calm, warm interface.",
       gallery: [
         {
-          src: "/projects/laterlah/laterlah-today.svg",
+          src: "/projects/laterlah/laterlah-today.png",
           alt: "LaterLah Today screen showing resurfaced items with editorial labels",
           title: "Resurfaced for today",
           featured: true,
           caption: "Today screen — the scoring engine selects up to 3 items per day. Cards show editorial labels (\"Worth coming back to\", \"From a while ago\"), domain, and save age.",
         },
         {
-          src: "/projects/laterlah/laterlah-library.svg",
+          src: "/projects/laterlah/laterlah-library.png",
           alt: "LaterLah Library screen with search, filter pills, and sort options",
           title: "Full library",
           caption: "Library — full item history with debounced search, kind filters (Links / Notes / Images), sort by newest, oldest, or recently opened, and pagination.",
         },
         {
-          src: "/projects/laterlah/laterlah-capture.svg",
+          src: "/projects/laterlah/laterlah-capture.png",
           alt: "LaterLah Capture screen with URL, note, and image upload options",
           title: "Save anything",
           caption: "Capture — URL with async metadata fetch, rich notes, or image upload with magic-byte validation and a \"why saved\" field for personal context.",
         },
         {
-          src: "/projects/laterlah/laterlah-surprise.svg",
+          src: "/projects/laterlah/laterlah-surprise.png",
           alt: "LaterLah Surprise Me screen showing a random unread item",
           title: "Surprise me",
           caption: "Surprise Me — weighted random selection across all waiting items. Not Now, Another One, or Open. Items are marked resurfaced only when shown.",
@@ -252,9 +253,11 @@ export const projects: Project[] = [
   {
     slug: "rosta",
     title: "Rosta",
-    thesis: "A save-this-week scheduling platform for shift-based teams that juggle availability, swaps, time-off, and slot assignments across seven days.",
+    category: "Team shift scheduling",
+    thesis: "A scheduling platform for shift-based teams that juggle availability, swaps, time-off, and slot assignments across seven days.",
     role: "Solo personal project",
     status: "prototype",
+    statusLabel: "Prototype",
     problem: "Cafe teams manage schedules through spreadsheets or expensive SaaS tools. Most shift scheduling apps are overbuilt for enterprise or too rigid for small teams.",
     keyConstraint: "Multi-tenant RLS with configurable roles - every query scoped to organization_id, permissions stored as jsonb on the role, not hardcoded.",
     systemDecision: "Built with Next.js 16 Server Actions (no API routes), Supabase Postgres with RLS, and a deterministic role model where permissions are jsonb checked via a single user_has_permission() SQL function. Route groups for layout sharing, safe-to-re-run migrations (every create/add/drop guarded with if not exists), and flattened URLs via next.config.ts redirects.",
@@ -282,6 +285,12 @@ export const projects: Project[] = [
       "Waldenburg + Inter (ElevenLabs design system)",
     ],
     outcome: "Foundation — Who is looking matters more than what they see. In a scheduling app, a manager, an employee, and a viewer should all see completely different things. Instead of handling this case by case, the whole system was built around a single rule: check who the user is, then decide what they can do. System — No middleman. Built with Server Actions — the frontend talks directly to the database without a separate API layer. Fewer files, less code. The tradeoff is some patterns that work with traditional APIs do not work here and took time to figure out. Problems solved — Every organisation data stays separate. One wrong query and an employee sees another company schedule. The database enforces this at every level. Publishing a schedule with conflicts (double-booked shifts, unstaffed slots) — the builder catches these in real time before anyone hits publish. Roles that actually make sense — Admin, Manager, Employee, Viewer. Each has exactly the permissions they need, nothing more. Stored in a way that is easy to change without redeploying.",
+    sourceUrl: "https://github.com/pakyad/rosta",
+    whatBroke: [
+      "One wrong query could expose another organisation's schedule — RLS now enforces tenant isolation at the database level on every query.",
+      "Schedules were being published with conflicts — the builder validates double-booked and unstaffed slots in real time before publish.",
+      "Hardcoded role checks began sprawling through app code — permissions moved to jsonb checked through a single user_has_permission() SQL function.",
+    ],
     media: {
       poster: "/screenshots/poster.svg",
       posterCaption: "ROSTA replaces chaotic messaging and spreadsheets with a centralized, permission-governed schedule that every employee can access, every manager can build, and every organization can trust.",
@@ -314,7 +323,43 @@ export const projects: Project[] = [
       ],
     },
   },
+  {
+    slug: "codedulu",
+    title: "CodeDulu",
+    category: "Developer momentum tool",
+    thesis: "Early side-project idea.",
+    role: "Early idea",
+    status: "prototype",
+    problem: "More details will be added as the project takes shape.",
+    keyConstraint: "The direction is still being explored.",
+    systemDecision: "CodeDulu is an early project idea.",
+    trace: [],
+    features: [],
+    technology: [],
+    outcome: "",
+    media: { poster: "", gallery: [] },
+  },
+  {
+    slug: "soon",
+    title: "Soon",
+    category: "Context-aware reminders",
+    thesis: "Early side-project idea.",
+    role: "Early idea",
+    status: "prototype",
+    problem: "More details will be added as the project takes shape.",
+    keyConstraint: "The direction is still being explored.",
+    systemDecision: "Soon is an early project idea.",
+    trace: [],
+    features: [],
+    technology: [],
+    outcome: "",
+    media: { poster: "", gallery: [] },
+  },
 ];
+
+export const publishedProjects = projects.filter(
+  (p) => p.slug !== "codedulu" && p.slug !== "soon"
+);
 
 export function getProject(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);

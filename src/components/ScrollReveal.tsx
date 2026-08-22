@@ -26,6 +26,8 @@ export default function ScrollReveal({
     const el = ref.current;
     if (!el) return;
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const targets = el.children.length > 0 ? Array.from(el.children) : [el];
 
     animate(targets, { opacity: [0, 1], translateY: [distance, 0], duration: 0 });

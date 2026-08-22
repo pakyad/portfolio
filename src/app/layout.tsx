@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Anton } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import "@/styles/interactive-sound.css";
+
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -48,11 +48,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <a href="#main-content" className="skip-link">Skip to main content</a>
         <div id="main-content" tabIndex={-1}><PortfolioShell>{children}</PortfolioShell></div>
-        <Script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js" strategy="beforeInteractive" />
         <Script id="touch-detect" strategy="afterInteractive">{`
           if (matchMedia("(pointer: coarse)").matches) document.body.classList.add("is-touch");
         `}</Script>
-        <Script src="/interactive-sound.js" strategy="afterInteractive" />
       </body>
     </html>
   );
