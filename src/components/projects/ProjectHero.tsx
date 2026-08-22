@@ -1,10 +1,12 @@
 import type { Project } from "@/content/projects";
+import { getBrandedProjectUrl } from "@/content/projectDomains";
 import MonoLabel from "@/components/ui/MonoLabel";
 import ScreenshotFrame from "@/components/projects/ScreenshotFrame";
 import ProjectTechStack from "@/components/projects/ProjectTechStack";
 
 export default function ProjectHero({ project }: { project: Project }) {
   const hasPoster = Boolean(project.media.poster || project.media.posterSecondary);
+  const liveUrl = getBrandedProjectUrl(project.slug, project.liveUrl);
 
   return (
     <section className="project-hero">
@@ -14,8 +16,8 @@ export default function ProjectHero({ project }: { project: Project }) {
           <p className="project-hero-subtitle">{project.thesis}</p>
           <div className="project-hero-meta"><MonoLabel className="project-hero-meta-label">Role</MonoLabel><p className="project-hero-meta-value">{project.role}</p></div>
           <ProjectTechStack project={project} />
-          {project.liveUrl && (
-            <a className="project-live-link" href={project.liveUrl} target="_blank" rel="noreferrer">
+          {liveUrl && (
+            <a className="project-live-link" href={liveUrl} target="_blank" rel="noreferrer">
               View live website <span aria-hidden="true">↗</span>
             </a>
           )}
