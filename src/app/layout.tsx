@@ -20,10 +20,10 @@ export const viewport: Viewport = { width: "device-width", initialScale: 1, them
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: { default: "Muhammad Iyad Iman Mohmad Nazri - Portfolio", template: "%s - Muhammad Iyad" },
-  description: "Portfolio of Iyad Iman, a designer and developer building clear, useful digital products.",
+  description: "Software Engineering student building thoughtful digital products from interface to infrastructure.",
   openGraph: {
     title: "Muhammad Iyad Iman Mohmad Nazri - Portfolio",
-    description: "Portfolio of Iyad Iman, a designer and developer building clear, useful digital products.",
+    description: "Software Engineering student building thoughtful digital products from interface to infrastructure.",
     url: baseUrl,
     siteName: "Muhammad Iyad",
     locale: "en_US",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Muhammad Iyad Iman Mohmad Nazri - Portfolio",
-    description: "Portfolio of Iyad Iman, a designer and developer building clear, useful digital products.",
+    description: "Software Engineering student building thoughtful digital products from interface to infrastructure.",
     images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },

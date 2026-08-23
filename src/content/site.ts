@@ -7,7 +7,7 @@ export const site = {
   description:
     "Portfolio of Muhammad Iyad Iman — Software Engineering student building thoughtful digital products from interface to infrastructure.",
   url: "https://portfolio-iyad-s-projects1.vercel.app",
-  ogImage: "/og.jpg",
+  ogImage: "/og-image.png",
   email: "iyadmohmadnazri@gmail.com",
   social: {
     github: "https://github.com/pakyad",
