@@ -22,6 +22,9 @@ export default function ContactPage() {
           Internship enquiries welcome. {STATUS}. Email is fastest &mdash; code lives on GitHub.
         </p>
         <div className="contact-links">
+          <a href={`mailto:${site.email}`} className="contact-link contact-link--primary">
+            <span className="contact-arrow">&#8599;&#xFE0E;</span><span className="contact-label">{site.email}</span>
+          </a>
           {primary.map((link) => (
             <a key={link.label} href={link.href} className="contact-link" target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}>
               <span className="contact-arrow">&#8599;&#xFE0E;</span><span className="contact-label">({link.label})</span>

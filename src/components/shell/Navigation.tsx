@@ -1,14 +1,22 @@
 "use client";
 
-export type NavSection = { id: string; label: string };
+import Link from "next/link";
 
-export default function Navigation({ sections }: { sections: NavSection[] }) {
+export type NavSection = { href: string; label: string };
+
+const SECTIONS = [
+  { href: "/#work", label: "(WRK)" },
+  { href: "/#about", label: "(WHO)" },
+  { href: "/#contact", label: "(MSG)" },
+];
+
+export default function Navigation() {
   return (
     <header className="site-navigation">
       <span data-hero-logo aria-label="Logo interaction">◎</span>
       <span>©2026</span>
       <nav aria-label="Page sections">
-        {sections.map((section) => <a key={section.id} href={`#${section.id}`}>{section.label}</a>)}
+        {SECTIONS.map((section) => <Link key={section.href} href={section.href}>{section.label}</Link>)}
       </nav>
     </header>
   );

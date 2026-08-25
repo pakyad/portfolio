@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getProject, publishedProjects } from "@/content/projects";
+import { getProject, caseStudies } from "@/content/projects";
 import { site } from "@/content/site";
 import ProjectHero from "@/components/projects/ProjectHero";
 import ProjectEvidence from "@/components/projects/ProjectEvidence";
@@ -18,13 +18,13 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return publishedProjects.map((p) => ({ slug: p.slug }));
+  return caseStudies.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = getProject(slug);
-  if (!project || !publishedProjects.some((p) => p.slug === slug)) return {};
+  if (!project || !caseStudies.some((p) => p.slug === slug)) return {};
   return {
     title: `${project.title} - ${site.title}`,
     description: project.thesis,
@@ -35,7 +35,7 @@ export default async function ProjectPage({ params }: Props) {
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
-  if (!publishedProjects.some((p) => p.slug === project.slug)) notFound();
+  if (!caseStudies.some((p) => p.slug === project.slug)) notFound();
 
   return (
     <article className="project-detail">

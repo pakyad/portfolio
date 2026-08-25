@@ -7,7 +7,7 @@ export default function Hero() {
         <span className="sr-only">Iyad Iman</span>
         <KineticText text="IYAD IMAN" />
       </h1>
-      <p>Software Engineering student building thoughtful digital products &mdash; from interface to infrastructure.</p>
+      <p>I&rsquo;m Iyad &mdash; a software engineering student in Penang who builds real things end to end: the interface, the logic behind it, and the infrastructure underneath.</p>
     </section>
   );
 }

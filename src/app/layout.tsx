@@ -20,10 +20,10 @@ export const viewport: Viewport = { width: "device-width", initialScale: 1, them
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: { default: "Muhammad Iyad Iman Mohmad Nazri - Portfolio", template: "%s - Muhammad Iyad" },
-  description: "Software Engineering student building thoughtful digital products from interface to infrastructure.",
+  description: "Software engineering student in Penang building real products end to end - interface, logic, infrastructure.",
   openGraph: {
     title: "Muhammad Iyad Iman Mohmad Nazri - Portfolio",
-    description: "Software Engineering student building thoughtful digital products from interface to infrastructure.",
+    description: "Software engineering student in Penang building real products end to end - interface, logic, infrastructure.",
     url: baseUrl,
     siteName: "Muhammad Iyad",
     locale: "en_US",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Muhammad Iyad Iman Mohmad Nazri - Portfolio",
-    description: "Software Engineering student building thoughtful digital products from interface to infrastructure.",
+    description: "Software engineering student in Penang building real products end to end - interface, logic, infrastructure.",
     images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
@@ -44,7 +44,7 @@ import PortfolioShell from "@/components/shell/PortfolioShell";
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${anton.variable}`} data-scroll-behavior="smooth">
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${anton.variable}`}>
       <body>
         <a href="#main-content" className="skip-link">Skip to main content</a>
         <div id="main-content" tabIndex={-1}><PortfolioShell>{children}</PortfolioShell></div>

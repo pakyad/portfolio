@@ -1,13 +1,11 @@
 import Link from "next/link";
-import { projects } from "@/content/projects";
+import { caseStudies } from "@/content/projects";
 import type { Project } from "@/content/projects";
 
-const publishedProjects = projects.filter((p) => p.slug !== "codedulu" && p.slug !== "soon");
-
 export default function ProjectNavigator({ project }: { project: Project }) {
-  const idx = publishedProjects.findIndex((p) => p.slug === project.slug);
-  const prev = idx > 0 ? publishedProjects[idx - 1] : null;
-  const next = idx < publishedProjects.length - 1 ? publishedProjects[idx + 1] : null;
+  const idx = caseStudies.findIndex((p) => p.slug === project.slug);
+  const prev = idx > 0 ? caseStudies[idx - 1] : null;
+  const next = idx < caseStudies.length - 1 ? caseStudies[idx + 1] : null;
 
   if (!prev && !next) return null;
 

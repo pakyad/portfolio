@@ -3,10 +3,19 @@ import MonoLabel from "@/components/ui/MonoLabel";
 
 type EvidenceRow = { label: string; value: string; href?: string };
 
+function formatSource(url: string): string {
+  try {
+    const parsed = new URL(url);
+    return parsed.hostname === "github.com" ? `github.com${parsed.pathname}` : parsed.hostname + parsed.pathname;
+  } catch {
+    return url.replace(/^https?:\/\//, "");
+  }
+}
+
 function buildRows(project: Project): EvidenceRow[] {
   const rows: EvidenceRow[] = [];
   if (project.liveUrl) rows.push({ label: "Live", value: project.liveUrl.replace(/^https?:\/\//, ""), href: project.liveUrl });
-  if (project.sourceUrl) rows.push({ label: "Source", value: project.sourceUrl.replace(/^https?:\/\/(www\.)?/, "github.com/"), href: project.sourceUrl });
+  if (project.sourceUrl) rows.push({ label: "Source", value: formatSource(project.sourceUrl), href: project.sourceUrl });
   if (project.tests) rows.push({ label: "Tests", value: project.tests });
   if (project.deployment) rows.push({ label: "Deployment", value: project.deployment });
   if (project.performance) rows.push({ label: "Performance", value: project.performance });

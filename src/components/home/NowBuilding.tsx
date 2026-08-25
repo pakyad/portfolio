@@ -1,7 +1,7 @@
 const FOCUS = [
-  { label: "Currently", value: "Rosta Live" },
-  { label: "Status", value: "Building" },
-  { label: "Focus", value: "Realtime collaboration" },
+  { label: "Building", value: "Rosta" },
+  { label: "Status", value: "Prototype" },
+  { label: "Next up", value: "Realtime collaboration" },
 ];
 
 export function NowBuilding() {
