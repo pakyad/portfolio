@@ -1,6 +1,6 @@
 import Hero from "@/components/home/Hero";
 import HorizontalIndex from "@/components/home/HorizontalIndex";
-import { NowBuilding } from "@/components/home/NowBuilding";
+
 import { LocationMap } from "@/components/home/LocationMap";
 import { site } from "@/content/site";
 
@@ -21,10 +21,6 @@ export default function Home() {
           </p>
         </div>
         <div className="info-panel">
-          <div className="info-building">
-            <NowBuilding />
-          </div>
-
           <LocationMap />
         </div>
       </section>

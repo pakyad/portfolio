@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { caseStudies, siteBuilds } from "@/content/projects";
+import { works } from "@/content/projects";
 import ProjectInteractions from "@/components/home/ProjectInteractions";
 
 const gradients = [
@@ -13,59 +13,37 @@ export default function HorizontalIndex() {
     <section id="work" className="work-section" aria-labelledby="work-heading">
       <h2 id="work-heading">Selected work.</h2>
       <ProjectInteractions>
-        {caseStudies.map((project, i) => (
-          <Link
-            key={project.slug}
-            href={`/projects/${project.slug}`}
-            className={`project-row${project.availability === "unavailable" ? " project-row--offline" : ""}`}
-            data-image={gradients[i % gradients.length]}
-            data-label={`${project.title} — ${project.category}`}
-            aria-label={`View project: ${project.title}`}
-          >
-            <span className="project-year" aria-hidden="true">{`//${project.year.slice(-2)}`}</span>
-            <span className="project-category">{project.category}</span>
-            <h3 className="project-title">{project.title}</h3>
-            <span className="project-row-meta">
-              {project.liveUrl && project.availability !== "unavailable" && <span className="meta-tag">Live</span>}
-              {project.sourceUrl && <span className="meta-tag">Source</span>}
-              {project.statusLabel && <span className="meta-status">{project.statusLabel}</span>}
-            </span>
-            <span className="project-arrow" aria-hidden="true">&#8599;</span>
-          </Link>
-        ))}
+        {works.map((work, i) => {
+          const href = work.liveUrl && work.availability !== "unavailable"
+            ? work.liveUrl
+            : work.sourceUrl
+            ? `/projects/${work.slug}`
+            : undefined;
+          const isPlaceholder = !href;
+          return (
+            <Link
+              key={work.slug}
+              href={href ?? "#"}
+              className={`work-row${work.tier === "featured" ? " work-row--featured" : ""}${work.availability === "unavailable" ? " work-row--offline" : ""}${isPlaceholder ? " work-row--placeholder" : ""}`}
+              data-image={gradients[i % gradients.length]}
+              data-label={`${work.title} — ${work.category}`}
+              aria-label={`View project: ${work.title}`}
+              aria-disabled={isPlaceholder}
+              tabIndex={isPlaceholder ? -1 : 0}
+            >
+              <span className="work-year" aria-hidden="true">{`//${work.year.slice(-2)}`}</span>
+              <h3 className="work-title">{work.title}</h3>
+              {work.description && <span className="work-desc">{work.description}</span>}
+              <span className="work-meta">
+                {work.liveUrl && work.availability !== "unavailable" && <span className="meta-tag">Live</span>}
+                {work.sourceUrl && <span className="meta-tag">Source</span>}
+                {work.statusLabel && <span className="meta-status">{work.statusLabel}</span>}
+              </span>
+              <span className="work-arrow" aria-hidden="true">&#8599;</span>
+            </Link>
+          );
+        })}
       </ProjectInteractions>
-
-      <div className="more-builds">
-        <h3 className="more-builds-title">More builds</h3>
-        <ul className="build-list">
-          {siteBuilds.map((build) => {
-            const inner = (
-              <>
-                <span className="project-year" aria-hidden="true">{`//${build.year.slice(-2)}`}</span>
-                <span className="build-num">{build.title}</span>
-                <span className="build-desc">{build.description}</span>
-                <span className="project-row-meta">
-                  {build.url && !build.placeholder && <span className="meta-tag">Live</span>}
-                  {build.sourceUrl && <span className="meta-tag">Source</span>}
-                </span>
-                {(build.url || build.sourceUrl) && !build.placeholder && (
-                  <span className="project-arrow" aria-hidden="true">&#8599;</span>
-                )}
-              </>
-            );
-            const href = build.placeholder ? undefined : build.url ?? build.sourceUrl;
-            return (
-              <li key={build.title} className="build-row">
-                {href ? (
-                  <a href={href} target="_blank" rel="noopener noreferrer" className="build-link">{inner}</a>
-                ) : (
-                  <div className="build-link build-link--placeholder">{inner}</div>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      </div>
     </section>
   );
 }

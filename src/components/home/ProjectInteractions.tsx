@@ -47,7 +47,7 @@ export default function ProjectInteractions({ children }: ProjectInteractionsPro
   useEffect(() => {
     const list = listRef.current;
     if (!list) return;
-    const rows = Array.from(list.querySelectorAll<HTMLElement>(".project-row"));
+    const rows = Array.from(list.querySelectorAll<HTMLElement>(".work-row"));
 
     if (window.matchMedia("(pointer: coarse)").matches) {
       let spotlightedRow: Element | null = null;
