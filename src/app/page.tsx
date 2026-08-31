@@ -27,12 +27,12 @@ export default function Home() {
       <section id="contact" className="contact-section" aria-labelledby="contact-heading">
         <p className="eyebrow">Contact</p>
         <h2 id="contact-heading">Let&rsquo;s connect.</h2>
-        <p className="contact-note">Internship enquiries welcome. Email is fastest.</p>
+        <p className="contact-note">Open to internships &mdash; email is fastest.</p>
         <div className="contact-links">
           <a href={`mailto:${site.email}`} className="contact-link contact-link--primary"><span className="contact-arrow">&#8599;&#xFE0E;</span><span className="contact-label">{site.email}</span></a>
-          <a href={site.social.github} target="_blank" rel="noopener noreferrer" className="contact-link"><span className="contact-arrow">&#8599;&#xFE0E;</span><span className="contact-label">(GitHub)</span></a>
-          <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer" className="contact-link"><span className="contact-arrow">&#8599;&#xFE0E;</span><span className="contact-label">(LinkedIn)</span></a>
-          <a href={site.social.whatsapp} target="_blank" rel="noopener noreferrer" className="contact-link contact-link--secondary"><span className="contact-arrow">&#8599;&#xFE0E;</span><span className="contact-label">(WhatsApp)</span></a>
+          <a href={site.social.github} target="_blank" rel="noopener noreferrer" className="contact-link"><span className="contact-arrow">&#8599;&#xFE0E;</span><span className="contact-label">GitHub</span></a>
+          <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer" className="contact-link"><span className="contact-arrow">&#8599;&#xFE0E;</span><span className="contact-label">LinkedIn</span></a>
+          <a href={site.social.whatsapp} target="_blank" rel="noopener noreferrer" className="contact-link contact-link--secondary"><span className="contact-arrow">&#8599;&#xFE0E;</span><span className="contact-label">WhatsApp</span></a>
         </div>
       </section>
     </>

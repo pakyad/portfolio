@@ -202,6 +202,17 @@ Rosta came from thinking about how teams actually organise themselves rather tha
 
 ---
 
+## Experiments & Shelved
+These didn't ship but taught something:
+
+* **Princess and the Prepo** — TESL educational experience. Abandoned when scope exploded. Lesson: constraint-first or it balloons.
+* **blu / coastline / bazram merdeka** — visual web experiments. Unfinished. Extracted animation patterns used in Alder.
+* **Other portfolio experiments** — Most discarded. This site is the survivor.
+
+Rule: if it's not in the shipped four above, it's an experiment, not a product.
+
+---
+
 ## Cross-Project Themes
 **Constraint-first thinking** — Every project starts with a genuine constraint, not a feature list.
 

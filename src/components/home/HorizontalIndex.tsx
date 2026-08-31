@@ -6,6 +6,9 @@ const gradients = [
   "linear-gradient(135deg, #2a4d7a, #16305c)",
   "linear-gradient(135deg, #3a2a6a, #1c1848)",
   "linear-gradient(135deg, #2a6a5a, #143830)",
+  "linear-gradient(135deg, #1f5f8a, #0e2f4d)",
+  "linear-gradient(135deg, #7a4a2a, #3d2413)",
+  "linear-gradient(135deg, #2a3a6a, #14203c)",
 ];
 
 export default function HorizontalIndex() {
@@ -38,8 +41,9 @@ export default function HorizontalIndex() {
                 {work.liveUrl && work.availability !== "unavailable" && <span className="meta-tag">Live</span>}
                 {work.sourceUrl && <span className="meta-tag">Source</span>}
                 {work.statusLabel && <span className="meta-status">{work.statusLabel}</span>}
+                {work.availability === "unavailable" && <span className="meta-tag meta-tag--offline">Offline &mdash; back soon</span>}
               </span>
-              <span className="work-arrow" aria-hidden="true">&#8599;</span>
+              <span className="work-arrow" aria-hidden="true">{work.availability === "unavailable" ? "&#8635;" : "&#8599;"}</span>
             </Link>
           );
         })}

@@ -32,16 +32,18 @@ These experiences are not directly related to software, but they shaped how Iyad
 ## Freelance / Independent Development
 Iyad has also worked independently on web projects and personal products, covering UI/UX, frontend development, full-stack development, testing and deployment.
 
-Projects discussed across previous conversations include:
+### Shipped Projects
+* **ALDER ROASTERS** — specialty coffee commerce (live)
+* **CODEP-PULSE** — campus marketplace with AI pricing (in development)
+* **LATERLAH** — deterministic save-for-later (prototype, paused)
+* **ROSTA** — team scheduling with multi-tenant RLS (prototype)
 
-* **CODEP / CODEP-PULSE** — campus everything-on-demand platform
-* **ALDER ROASTERS** — specialty coffee commerce experience
-* **Princess and the Prepo** — interactive educational web experience for TESL students
-* **Rosta** — team / roster-related product concept
-* **blu / coastline / bazram merdeka** — various web and visual experience projects
-* Various experimental portfolio, interactive and creative web projects
+### Experiments & Shelved
+* **Princess and the Prepo** — interactive educational experience for TESL students. Abandoned when scope exploded. Lesson: constraint-first or it balloons.
+* **blu / coastline / bazram merdeka** — visual web experiments. Unfinished. Extracted animation patterns used in Alder.
+* **Various portfolio experiments** — Most discarded. This site is the survivor.
 
-Some of these are polished projects, some are experiments, and some are still evolving. They shouldn't all be presented as finished products or major achievements.
+Rule: if it's not in the shipped four above, it's an experiment, not a product.
 
 What matters more is the pattern behind them: Iyad usually likes taking an idea from **concept → design → implementation → deployment**, rather than stopping at an isolated coding exercise.
 
