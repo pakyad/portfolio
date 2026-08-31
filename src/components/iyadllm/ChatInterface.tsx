@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import MessageBubble from './MessageBubble';
 import ChatInput from './ChatInput';
-import RateLimitIndicator from './RateLimitIndicator';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -18,7 +17,6 @@ interface ChatInterfaceProps {
 export default function ChatInterface({ onOrbStateChange }: ChatInterfaceProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [rateLimit, setRateLimit] = useState<{ limit: number; remaining: number; resetTime: number } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
@@ -55,11 +53,6 @@ export default function ChatInterface({ onOrbStateChange }: ChatInterfaceProps) 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         if (response.status === 429) {
-          setRateLimit({
-            limit: parseInt(response.headers.get('X-RateLimit-Limit') || '15', 10),
-            remaining: 0,
-            resetTime: parseInt(response.headers.get('X-RateLimit-Reset') || '0', 10),
-          });
           setError('Rate limit exceeded. Try again later.');
         } else {
           setError(errorData.error || 'Something went wrong');
@@ -68,13 +61,6 @@ export default function ChatInterface({ onOrbStateChange }: ChatInterfaceProps) 
         setIsLoading(false);
         return;
       }
-
-      const rateLimitInfo = {
-        limit: parseInt(response.headers.get('X-RateLimit-Limit') || '15', 10),
-        remaining: parseInt(response.headers.get('X-RateLimit-Remaining') || '0', 10),
-        resetTime: parseInt(response.headers.get('X-RateLimit-Reset') || '0', 10),
-      };
-      setRateLimit(rateLimitInfo);
 
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
@@ -156,8 +142,24 @@ setError('Failed to send message. Please try again.');
     <div className="flex-1 flex flex-col overflow-hidden min-h-0">
       <div className="flex-1 overflow-y-auto p-4 space-y-3" role="log" aria-live="polite" aria-label="Chat messages">
         {messages.length === 0 && (
-          <div className="text-center text-muted py-10">
-            <p className="text-sm">sup. ask me anything about Iyad — projects, design, code, career, whatever.</p>
+          <div className="flex flex-col items-center text-center pt-10 pb-6 px-2">
+            <p className="text-[0.68rem] uppercase tracking-[0.18em] text-[#e8c87a] mb-3">IyadLLM</p>
+            <p className="text-sm text-black/65 leading-relaxed max-w-[22rem]">
+              Ask me anything about Iyad &mdash; projects, design, code, career.
+            </p>
+            <div className="flex flex-wrap justify-center gap-2 mt-5">
+              {['your projects', 'what broke?', 'internship'].map((s) => (
+                <button
+                  key={s}
+                  type="button"
+                  onClick={() => sendMessage(s)}
+                  disabled={isLoading}
+                  className="px-3 py-1.5 rounded-full text-xs bg-white/60 ring-1 ring-black/10 text-black/70 hover:bg-white hover:text-black transition-colors disabled:opacity-50"
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
           </div>
         )}
         {messages.map((msg, idx) => (
@@ -167,15 +169,13 @@ setError('Failed to send message. Please try again.');
       </div>
 
       {error && (
-        <div className="px-4 py-2 text-xs text-red-400 text-center" role="alert">
+        <div className="px-4 py-2 text-xs text-destructive text-center" role="alert">
           {error}
-          <button onClick={() => setError(null)} className="ml-2 text-red-400 hover:text-red-300 underline">
+          <button onClick={() => setError(null)} className="ml-2 text-destructive hover:text-destructive/70 underline">
             Dismiss
           </button>
         </div>
       )}
-
-      <RateLimitIndicator rateLimit={rateLimit} />
 
       <ChatInput
         onSend={sendMessage}
